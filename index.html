@@ -3,368 +3,309 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>CP BerryTech — Software para huertas de berries (Colima)</title>
-  <meta name="description" content="Asigna tareas, controla actividades de huerta, conteo de cajas, inventario y calcula nómina automática. Suscripción mensual por rancho en Colima." />
+  <title>CP BerryTech | Control para huertas de berries</title>
+  <meta name="description" content="CP BerryTech ayuda a organizar actividades, personal, pagos, inventario y reportes en huertas de berries con una solución clara, práctica y fácil de usar." />
   <style>
     :root{
-      --bg:#0b1220; --muted:#a9b4d0; --text:#eaf0ff;
-      --accent:#34d399; --accent2:#60a5fa; --border:rgba(255,255,255,.10);
-      --shadow: 0 18px 60px rgba(0,0,0,.35); --radius: 18px;
+      --bg:#050910;
+      --bg-soft:#0a1421;
+      --card:rgba(255,255,255,.06);
+      --card-2:rgba(255,255,255,.04);
+      --text:#eef5ff;
+      --muted:#bfd0e6;
+      --line:rgba(255,255,255,.10);
+      --green:#7fc61f;
+      --green-dark:#2a8a2d;
+      --blue:#2456b8;
+      --blue-dark:#17337f;
+      --shadow:0 24px 70px rgba(0,0,0,.38);
+      --radius:24px;
+      --max:1180px;
     }
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
       background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(52,211,153,.25), transparent 60%),
-        radial-gradient(1000px 500px at 85% 10%, rgba(96,165,250,.22), transparent 55%),
-        linear-gradient(180deg, #070b15 0%, var(--bg) 55%, #050814 100%);
+        radial-gradient(900px 500px at 10% 0%, rgba(127,198,31,.20), transparent 58%),
+        radial-gradient(900px 500px at 90% 10%, rgba(36,86,184,.24), transparent 58%),
+        linear-gradient(180deg, #02050a 0%, var(--bg) 45%, var(--bg-soft) 100%);
     }
-    a{color:inherit}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 22px}
     .nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(7,11,21,.65);
-      border-bottom: 1px solid var(--border);
+      position:sticky;top:0;z-index:80;
+      background:rgba(3,7,12,.76);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
     }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .brand img{
-      width:58px;height:58px;border-radius:12px;object-fit:contain;
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(0,0,0,.10);padding:8px;
-    }
-    .brand strong{font-size:16px}
-    .brand small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-    .nav-links{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-    .nav-links a{text-decoration:none;color:var(--muted);font-size:14px}
-    .nav-links a:hover{color:var(--text)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;min-width:0}
+    .brand img{width:66px;height:66px;object-fit:contain;border-radius:18px;background:rgba(255,255,255,.96);padding:8px}
+    .brand b{display:block;font-size:18px}
+    .brand span{display:block;font-size:12px;color:var(--muted)}
+    .links{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .links a{font-size:14px;color:var(--muted)}
+    .links a:hover{color:var(--text)}
     .btn{
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:10px 14px;border-radius:14px;
-      background: linear-gradient(135deg, rgba(52,211,153,.95), rgba(96,165,250,.95));
-      color:#06101f;font-weight:800;text-decoration:none;border:none;
-      box-shadow: 0 10px 30px rgba(52,211,153,.18);
-      white-space:nowrap;
+      padding:13px 18px;border-radius:16px;font-weight:800;
+      background:linear-gradient(135deg,var(--green),var(--blue));
+      color:#fff;border:none;box-shadow:0 14px 30px rgba(36,86,184,.26)
     }
-    .btn.secondary{
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      border:1px solid var(--border);
-      box-shadow:none;font-weight:700;
+    .btn.alt{background:rgba(255,255,255,.05);border:1px solid var(--line);box-shadow:none;color:var(--text)}
+    .hero{padding:52px 0 34px}
+    .hero-wrap{display:grid;grid-template-columns:1.06fr .94fr;gap:28px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;
+      background:rgba(127,198,31,.12);border:1px solid rgba(127,198,31,.26);font-size:13px;font-weight:700;color:#efffd6
     }
-    .hero{padding:56px 0 26px}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}
-    .pill{
-      display:inline-flex;gap:10px;align-items:center;
-      padding:8px 12px;border-radius:999px;
-      background: rgba(255,255,255,.05);
-      border:1px solid var(--border);
-      color: var(--muted);font-size:13px;
+    h1{margin:16px 0 14px;font-size:58px;line-height:1.02;letter-spacing:-1px}
+    .accent{background:linear-gradient(90deg,var(--green),#a2dc49 35%, #a9cbff 60%, var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:18px;line-height:1.75;color:var(--muted);margin:0 0 20px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+    .trust{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+    .trust .item,.card,.panel,.cta,.quote{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .trust .item{padding:16px}
+    .trust b{display:block;font-size:20px;margin-bottom:4px}
+    .trust span{color:var(--muted);font-size:13px;line-height:1.5}
+    .panel{padding:16px;background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.04))}
+    .logo-box{padding:22px;border-radius:22px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid var(--line)}
+    .logo-box img{width:min(100%,560px);margin:auto;filter:drop-shadow(0 18px 40px rgba(0,0,0,.45))}
+    .feature-mini{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+    .mini{padding:16px;border-radius:18px;background:var(--card-2);border:1px solid var(--line)}
+    .mini h3{margin:0 0 7px;font-size:16px}
+    .mini p{margin:0;color:var(--muted);font-size:13px;line-height:1.6}
+    section{padding:38px 0}
+    .section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:18px}
+    .section-head h2{margin:0;font-size:34px}
+    .section-head p{margin:0;max-width:700px;color:var(--muted);line-height:1.75}
+    .grid-3,.grid-2{display:grid;gap:14px}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{padding:22px}
+    .icon{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;font-size:21px;background:linear-gradient(135deg, rgba(127,198,31,.18), rgba(36,86,184,.18));border:1px solid var(--line);margin-bottom:12px}
+    .card h3{margin:0 0 8px;font-size:20px}
+    .card p{margin:0;color:var(--muted);line-height:1.7}
+    .tag{display:inline-flex;margin-top:12px;padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:12px;color:#dbe8fb}
+    .steps .card{position:relative;padding-left:78px}
+    .step{position:absolute;left:20px;top:20px;width:42px;height:42px;border-radius:999px;display:grid;place-items:center;font-weight:900;background:linear-gradient(135deg,var(--green-dark),var(--blue))}
+    .highlight{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;
     }
-    .pill b{color:var(--text)}
-    h1{margin:14px 0 10px;font-size:44px;line-height:1.06;letter-spacing:-.6px}
-    .gradient{background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip:text;background-clip:text;color:transparent;}
-    .lead{color:var(--muted);font-size:16px;line-height:1.6;margin:12px 0 18px}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-    .divider{height:1px;background: var(--border);margin:0}
-    section{padding:52px 0}
-    .section-title{display:flex;justify-content:space-between;align-items:end;gap:14px;margin-bottom:18px}
-    .section-title h2{margin:0;font-size:26px}
-    .section-title p{margin:0;color:var(--muted);max-width:620px;line-height:1.6}
-    .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .cards2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .card{
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:14px;
-    }
-    .icon{
-      width:40px;height:40px;border-radius:14px;
-      background: rgba(255,255,255,.06);
-      border:1px solid var(--border);
-      display:grid;place-items:center;margin-bottom:10px;font-size:18px;
-    }
-    .tag{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:6px 10px;border-radius:999px;
-      background: rgba(96,165,250,.10);
-      border:1px solid rgba(96,165,250,.22);
-      color:#d6e7ff;font-size:12px;margin-top:8px
-    }
-    .mock{
-      background: rgba(255,255,255,.05);
-      border:1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .mock-top{
-      display:flex;gap:6px;align-items:center;padding:12px 14px;
-      border-bottom:1px solid var(--border);
-      background: rgba(0,0,0,.15);
-    }
-    .dot{width:10px;height:10px;border-radius:999px;background: rgba(255,255,255,.20)}
-    .mock-body{padding:18px}
-    .chip{
-      display:inline-flex;gap:8px;align-items:center;
-      padding:8px 10px;border-radius:999px;
-      background: rgba(52,211,153,.12);
-      border:1px solid rgba(52,211,153,.25);
-      color:#c8ffe9;font-size:12px;margin-bottom:10px;
-    }
-    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .kpi{
-      display:flex;justify-content:space-between;align-items:center;gap:10px;
-      padding:12px 14px;margin-top:12px;
-      border:1px dashed rgba(255,255,255,.18);
-      border-radius: var(--radius);
-      color: var(--muted);font-size:13px;
-    }
-    .kpi b{color:var(--text)}
-    .footer{padding:24px 0 40px;color:var(--muted);font-size:13px}
+    .quote{padding:24px}
+    .quote p{margin:0;color:var(--muted);line-height:1.8;font-size:16px}
+    .quote b{display:block;margin-top:12px}
+    .cta{padding:26px;display:flex;justify-content:space-between;gap:18px;align-items:center;flex-wrap:wrap}
+    .cta h3{margin:0 0 8px;font-size:28px}
+    .cta p{margin:0;max-width:720px;color:var(--muted);line-height:1.7}
+    .footer{padding:28px 0 40px;color:var(--muted);font-size:13px}
+    .divider{height:1px;background:var(--line)}
     @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr;gap:16px}
-      h1{font-size:38px}
-      .cards3,.cards2{grid-template-columns:1fr}
-      .nav-links{display:none}
+      .hero-wrap,.grid-3,.grid-2,.highlight,.feature-mini,.trust{grid-template-columns:1fr}
+      .section-head{display:block}
+      .section-head p{margin-top:8px}
+      .links{display:none}
+      h1{font-size:42px}
     }
-  
-    .hero-logo{display:flex;justify-content:center;align-items:center;margin:0 0 18px}
-    .hero-logo img{width:min(560px, 92vw);height:auto;filter: drop-shadow(0 22px 60px rgba(0,0,0,.55));}
-    @media (max-width: 980px){
-      .hero-logo img{width:min(520px, 96vw);}
-    }
-    
-</style>
+  </style>
 </head>
-
 <body>
-<header class="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">
-        <img src="logo.png" alt="CP BerryTech logo">
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <img src="logo.png" alt="Logo de CP BerryTech">
+          <div>
+            <b>CP BerryTech</b>
+            <span>Tecnología al servicio del campo</span>
+          </div>
+        </a>
+        <nav class="links" aria-label="Navegación principal">
+          <a href="#beneficios">Beneficios</a>
+          <a href="#solucion">Qué resuelve</a>
+          <a href="#como-funciona">Cómo funciona</a>
+          <a href="precios.html">Planes</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+        <a class="btn" href="contacto.html">Solicitar información</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="hero">
+    <div class="container">
+      <div class="hero-wrap">
         <div>
-          <strong>CP BerryTech</strong>
-          <small>Tecnología al servicio del campo</small>
-        </div>
-      </a>
-
-      <nav class="nav-links" aria-label="Navegación">
-        <a href="#modulos">Módulos</a>
-        <a href="#como">Cómo funciona</a>
-        <a href="precios.html">Precios</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
-
-      <a class="btn" href="precios.html">Ver planes</a>
-    </div>
-  </div>
-</header>
-
-<main class="hero">
-  <div class="container">
-    <div class="hero-logo"><img src="logo.png" alt="CP BerryTech"></div>
-<div class="hero-grid">
-      <div>
-        <div class="pill">🍓 Suscripción mensual <b>por rancho</b> • Colima</div>
-        <h1>Administra tu huerta de berries con <span class="gradient">tareas + nómina + control</span>.</h1>
-        <p class="lead">
-          CP BerryTech es un sistema para huertas que permite <b>asignar tareas a empleados</b>,
-          registrar actividades diarias, llevar <b>conteo de cajas</b>, controlar inventario de insumos
-          y <b>calcular nóminas</b> automáticamente por periodos.
-        </p>
-
-        <div class="hero-actions">
-          <a class="btn" href="contacto.html">Solicitar demo</a>
-          <a class="btn secondary" href="precios.html">Ver planes</a>
-        </div>
-
-        <p class="lead" style="margin-top:14px">
-          ✅ Ideal para: fresa, arándano, frambuesa y zarzamora • cuadrillas • supervisores • reportes.
-        </p>
-      </div>
-
-      <div class="mock">
-        <div class="mock-top">
-          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-          <span style="margin-left:10px;color:var(--muted);font-size:12px">Panel (ejemplo)</span>
-        </div>
-        <div class="mock-body">
-          <div class="chip">✅ Tecnología al servicio del campo</div>
-          <div class="grid2">
-            <div class="card">
-              <h3>🧑‍🌾 Tareas</h3>
-              <p>Asignación por empleado, lote y labor. Estado y evidencia.</p>
-              <div class="tag">Poda • riego • fumigación • corte</div>
-            </div>
-            <div class="card">
-              <h3>💵 Nómina</h3>
-              <p>Pago por tarea/caja/jornal. Reportes por periodo.</p>
-              <div class="tag">Exporta Excel/PDF</div>
-            </div>
+          <div class="eyebrow">🍓 Hecho para huertas de berries</div>
+          <h1>La forma más clara de <span class="accent">organizar tu huerta</span> sin complicarte.</h1>
+          <p class="lead">
+            CP BerryTech reúne en un solo lugar lo que más necesita el rancho: control de actividades, personal, pagos, inventario, aplicaciones y reportes. Una solución pensada para trabajar de forma práctica, ordenada y cercana a la operación real del campo.
+          </p>
+          <div class="actions">
+            <a class="btn" href="contacto.html">Quiero una demo</a>
+            <a class="btn alt" href="precios.html">Ver planes</a>
           </div>
-          <div class="kpi">
-            <span>Conteo de cajas</span>
-            <b>por lote / por cuadrilla</b>
+          <div class="trust">
+            <div class="item"><b>Más orden</b><span>Todo queda registrado de manera simple y fácil de consultar.</span></div>
+            <div class="item"><b>Más control</b><span>Sabes qué se hizo, quién lo hizo y cuánto se gastó.</span></div>
+            <div class="item"><b>Más crecimiento</b><span>Empiezas con lo necesario y luego puedes ampliar el sistema.</span></div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</main>
 
-<hr class="divider"/>
-
-<section id="modulos">
-  <div class="container">
-    <div class="section-title">
-      <div>
-        <h2>Módulos del sistema</h2>
-        <p>Todo lo que una huerta necesita para operar, medir y pagar con orden.</p>
-      </div>
-    </div>
-
-    <div class="cards3">
-      <div class="card">
-        <div class="icon">🗂️</div>
-        <h3>Asignación de tareas</h3>
-        <p>Asignación por empleado, lote y actividad. Seguimiento: pendiente, en proceso, terminado.</p>
-        <div class="tag">Bitácora + evidencia</div>
-      </div>
-      <div class="card">
-        <div class="icon">🍓</div>
-        <h3>Conteo de cajas</h3>
-        <p>Captura cajas por cuadrilla/empleado, lote y turno. Productividad por semana y por lote.</p>
-        <div class="tag">Cajas • kg • calidad</div>
-      </div>
-      <div class="card">
-        <div class="icon">💰</div>
-        <h3>Nómina automática</h3>
-        <p>Tarifas por labor (por caja/tarea/jornal). Cálculo automático por periodo y reportes por empleado.</p>
-        <div class="tag">Recibos + totales</div>
-      </div>
-    </div>
-
-    <div class="cards3" style="margin-top:14px">
-      <div class="card">
-        <div class="icon">📦</div>
-        <h3>Inventario de insumos</h3>
-        <p>Entradas/salidas, mínimos y reportes por consumo (por actividad o por lote).</p>
-        <div class="tag">Alertas</div>
-      </div>
-      <div class="card">
-        <div class="icon">🧪</div>
-        <h3>Actividades de huerta</h3>
-        <p>Registro de labores: riego, fertilización, fumigación, poda, mantenimiento y más.</p>
-        <div class="tag">Historial</div>
-      </div>
-      <div class="card">
-        <div class="icon">📊</div>
-        <h3>Reportes y KPIs</h3>
-        <p>Productividad, cajas/empleado, incidencias, costos y comparativos por periodo.</p>
-        <div class="tag">Decisiones rápidas</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="como">
-  <div class="container">
-    <div class="section-title">
-      <div>
-        <h2>Cómo funciona</h2>
-        <p>Implementación por rancho, sencilla y rápida. Empiezas a capturar desde la primera semana.</p>
-      </div>
-    </div>
-
-    <div class="cards3">
-      <div class="card">
-        <div class="icon">1️⃣</div>
-        <h3>Configuración</h3>
-        <p>Empleados, cuadrillas, lotes, tipos de tareas y tarifas.</p>
-      </div>
-      <div class="card">
-        <div class="icon">2️⃣</div>
-        <h3>Operación diaria</h3>
-        <p>Asignas tareas y registras cajas/actividades e incidencias.</p>
-      </div>
-      <div class="card">
-        <div class="icon">3️⃣</div>
-        <h3>Nómina y reportes</h3>
-        <p>El sistema calcula pagos y genera reportes por periodo.</p>
-      </div>
-    </div>
-
-    <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
-      <a class="btn" href="contacto.html">Solicitar demo</a>
-      <a class="btn secondary" href="precios.html">Ver planes</a>
-    </div>
-  </div>
-</section>
-
-<section id="planes">
-  <div class="container">
-    <div class="section-title">
-      <div>
-        <h2>Planes</h2>
-        <p>Elige el plan por rancho según el tamaño y el nivel de control que necesitas.</p>
-      </div>
-      <a class="btn secondary" href="precios.html">Ver detalles</a>
-    </div>
-
-    <div class="cards3">
-      <div class="card">
-        <div class="icon">🟢</div>
-        <h3>Básico</h3>
-        <p class="lead" style="margin:8px 0 10px">Desde <b style="color:var(--text)">$900/mes</b> + instalación.</p>
-        <div class="tag">Empleados • Lotes • Labores • Tareas</div>
-        <div style="margin-top:14px">
-          <a class="btn secondary" href="precios.html">Ver plan</a>
-        </div>
-      </div>
-
-      <div class="card" style="border-color: rgba(52,211,153,.35)">
-        <div class="icon">🔵</div>
-        <h3>Pro (recomendado)</h3>
-        <p class="lead" style="margin:8px 0 10px">Desde <b style="color:var(--text)">$1,200/mes</b> + instalación.</p>
-        <div class="tag">Kiosko • RFID • Offline • Cajas • Nómina</div>
-        <div style="margin-top:14px">
-          <a class="btn" href="contacto.html">Solicitar demo</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="icon">🟣</div>
-        <h3>Enterprise</h3>
-        <p class="lead" style="margin:8px 0 10px">Desde <b style="color:var(--text)">$2,500/mes</b> + instalación.</p>
-        <div class="tag">Reportes avanzados • Auditoría • Soporte premium</div>
-        <div style="margin-top:14px">
-          <a class="btn secondary" href="precios.html">Hablar con ventas</a>
+        <div class="panel">
+          <div class="logo-box">
+            <img src="logo.png" alt="CP BerryTech">
+          </div>
+          <div class="feature-mini">
+            <div class="mini">
+              <h3>📋 Actividades del día</h3>
+              <p>Asigna labores por parcela, sección, fecha o trabajador para que todos sepan qué toca hacer.</p>
+            </div>
+            <div class="mini">
+              <h3>💵 Pagos más claros</h3>
+              <p>Facilita el control de pagos según el trabajo realizado en la huerta.</p>
+            </div>
+            <div class="mini">
+              <h3>📦 Insumos y aplicaciones</h3>
+              <p>Lleva registro de productos, entradas, salidas y uso en campo.</p>
+            </div>
+            <div class="mini">
+              <h3>📊 Reportes útiles</h3>
+              <p>Consulta avances, gastos y movimientos para tomar mejores decisiones.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </main>
 
-<hr class="divider"/>
+  <div class="divider"></div>
 
-<footer class="footer">
-  <div class="container">
-    <hr class="divider" style="margin-bottom:18px"/>
-    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="year"></span> <b style="color:var(--text)">CP BerryTech</b> — Colima.</div>
-      <div>Tecnología al servicio del campo 🍓</div>
+  <section id="beneficios">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Qué ve el cliente en CP BerryTech</h2>
+        </div>
+        <p>No es solo un sistema. Es una forma de tener la operación más ordenada, más visible y más fácil de administrar todos los días.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon">🌱</div>
+          <h3>Operación más organizada</h3>
+          <p>Ayuda a registrar actividades, avances y movimientos de manera clara para reducir confusiones y retrabajos.</p>
+          <span class="tag">Más control diario</span>
+        </article>
+        <article class="card">
+          <div class="icon">👥</div>
+          <h3>Mejor seguimiento del personal</h3>
+          <p>Permite ver quién trabajó, en qué área estuvo y qué actividad realizó durante la jornada.</p>
+          <span class="tag">Más claridad en campo</span>
+        </article>
+        <article class="card">
+          <div class="icon">📈</div>
+          <h3>Información para decidir mejor</h3>
+          <p>Con reportes simples y útiles, el rancho puede revisar gastos, productividad y avances con mayor facilidad.</p>
+          <span class="tag">Más visión del negocio</span>
+        </article>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <section id="solucion">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Una solución pensada para el día a día del rancho</h2>
+        </div>
+        <p>CP BerryTech se enfoca en resolver lo que más le importa al cliente: tener orden, ahorrar tiempo y contar con información confiable.</p>
+      </div>
+      <div class="grid-2">
+        <article class="card">
+          <div class="icon">✅</div>
+          <h3>Qué ayuda a resolver</h3>
+          <p>Desorden en actividades, dificultad para dar seguimiento al personal, pagos poco claros, control manual de inventario y falta de reportes útiles.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🍓</div>
+          <h3>Para quién es ideal</h3>
+          <p>Huertas y ranchos de berries que quieren empezar a profesionalizar su operación sin cambiar por completo su forma de trabajar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="steps">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Cómo se implementa</h2>
+        </div>
+        <p>El cliente no necesita entrar en detalles técnicos. El proceso se presenta de forma sencilla, clara y fácil de entender.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="step">1</div>
+          <h3>Conocemos tu operación</h3>
+          <p>Revisamos cómo trabaja tu huerta, qué necesitas controlar y qué áreas quieres mejorar primero.</p>
+        </article>
+        <article class="card">
+          <div class="step">2</div>
+          <h3>Adaptamos la solución</h3>
+          <p>Se ajusta el sistema para que se acomode a tu forma de trabajo y a la realidad del rancho.</p>
+        </article>
+        <article class="card">
+          <div class="step">3</div>
+          <h3>Empiezas a operar con más orden</h3>
+          <p>Tu equipo comienza a registrar actividades, movimientos y reportes en una sola plataforma.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="highlight">
+        <article class="quote">
+          <p>“Queremos que el productor sienta que tiene una herramienta hecha para su operación, no un sistema complicado. La idea es que vea orden, control y crecimiento desde el primer uso.”</p>
+          <b>CP BerryTech</b>
+        </article>
+        <article class="quote">
+          <p>“La meta no es llenar de funciones al cliente, sino darle exactamente lo que necesita para administrar mejor su huerta y tomar decisiones con más seguridad.”</p>
+          <b>Tecnología al servicio del campo</b>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h3>Haz que tu huerta trabaje con más orden y más control</h3>
+          <p>Conoce la propuesta de CP BerryTech y descubre cuál es el plan ideal para empezar en tu rancho.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn" href="precios.html">Ver planes</a>
+          <a class="btn alt" href="contacto.html">Hablar con nosotros</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="divider" style="margin-bottom:18px"></div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <span id="year"></span> CP BerryTech — Colima</div>
+        <div>Tecnología al servicio del campo 🍓</div>
+      </div>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -3,200 +3,130 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Contacto — CP BerryTech</title>
-  <meta name="description" content="Solicita una demo de CP BerryTech. Suscripción mensual por rancho en Colima. Software para tareas, nómina, inventario y conteo de cajas." />
+  <title>Contacto | CP BerryTech</title>
+  <meta name="description" content="Pide información de CP BerryTech y conoce cómo puede ayudar a tu huerta con una solución clara, profesional y fácil de adoptar." />
   <style>
-    :root{
-      --bg:#0b1220; --muted:#a9b4d0; --text:#eaf0ff;
-      --accent:#34d399; --accent2:#60a5fa; --border:rgba(255,255,255,.10);
-      --shadow: 0 18px 60px rgba(0,0,0,.35); --radius: 18px;
-    }
+    :root{--bg:#050910;--bg-soft:#0a1421;--text:#eef5ff;--muted:#bfd0e6;--line:rgba(255,255,255,.10);--card:rgba(255,255,255,.06);--green:#7fc61f;--blue:#2456b8;--radius:24px;--shadow:0 24px 70px rgba(0,0,0,.38)}
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(52,211,153,.25), transparent 60%),
-        radial-gradient(1000px 500px at 85% 10%, rgba(96,165,250,.22), transparent 55%),
-        linear-gradient(180deg, #070b15 0%, var(--bg) 55%, #050814 100%);
-    }
-    a{color:inherit}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
-    .nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(7,11,21,.65);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .brand img{
-      width:58px;height:58px;border-radius:12px;object-fit:contain;
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(0,0,0,.10);padding:8px;
-    }
-    .brand strong{font-size:16px}
-    .brand small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-    .nav-links{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-    .nav-links a{text-decoration:none;color:var(--muted);font-size:14px}
-    .nav-links a:hover{color:var(--text)}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:10px 14px;border-radius:14px;
-      background: linear-gradient(135deg, rgba(52,211,153,.95), rgba(96,165,250,.95));
-      color:#06101f;font-weight:800;text-decoration:none;border:none;
-      box-shadow: 0 10px 30px rgba(52,211,153,.18);
-      white-space:nowrap;
-    }
-    .btn.secondary{
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      border:1px solid var(--border);
-      box-shadow:none;font-weight:700;
-    }
-    main{padding:48px 0 18px}
-    h1{margin:0 0 10px;font-size:38px;letter-spacing:-.5px}
-    .lead{color:var(--muted);font-size:16px;line-height:1.6;margin:0 0 18px}
-    .divider{height:1px;background: var(--border);margin:0}
-    .contact{
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--border);
-      border-radius: 26px;
-      padding:18px;
-      display:grid;grid-template-columns: 1.1fr .9fr;gap:14px;
-    }
-    .form{display:grid;gap:10px}
-    input, textarea{
-      width:100%;
-      padding:12px 12px;border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.18);
-      color: var(--text);
-      font-size:14px;
-      outline:none;
-    }
-    textarea{min-height:110px;resize:vertical}
-    .card{
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:16px;
-    }
-    .hint{color:var(--muted);font-size:12px;line-height:1.6}
-    ul{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.9}
-    ul b{color:var(--text)}
-    .footer{padding:24px 0 40px;color:var(--muted);font-size:13px}
-    @media (max-width: 980px){
-      .contact{grid-template-columns:1fr}
-      .nav-links{display:none}
-    }
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(900px 500px at 10% 0%, rgba(127,198,31,.20), transparent 58%),radial-gradient(900px 500px at 90% 10%, rgba(36,86,184,.24), transparent 58%),linear-gradient(180deg,#02050a 0%,var(--bg) 45%,var(--bg-soft) 100%)}
+    img{max-width:100%;display:block} a{color:inherit;text-decoration:none}.container{max-width:1180px;margin:0 auto;padding:0 22px}
+    .nav{position:sticky;top:0;z-index:70;background:rgba(3,7,12,.76);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}.brand{display:flex;align-items:center;gap:12px}.brand img{width:66px;height:66px;object-fit:contain;border-radius:18px;background:rgba(255,255,255,.96);padding:8px}.brand b{display:block;font-size:18px}.brand span{display:block;font-size:12px;color:var(--muted)}
+    .links{display:flex;gap:18px;flex-wrap:wrap}.links a{font-size:14px;color:var(--muted)}.links a:hover{color:var(--text)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:16px;font-weight:800;background:linear-gradient(135deg,var(--green),var(--blue));color:#fff}.btn.alt{background:rgba(255,255,255,.05);border:1px solid var(--line)}
+    main{padding:50px 0 24px}.hero{text-align:center;max-width:860px;margin:0 auto 24px}.hero img{width:min(420px,92vw);margin:0 auto 14px;filter:drop-shadow(0 18px 40px rgba(0,0,0,.45))}
+    h1{margin:0 0 12px;font-size:46px;letter-spacing:-.8px}.lead{margin:0;color:var(--muted);line-height:1.8;font-size:17px}
+    .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin-top:26px}
+    .box,.info{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .box{padding:22px}.form{display:grid;gap:12px}input,textarea,select{width:100%;padding:14px 15px;border-radius:16px;border:1px solid var(--line);background:rgba(0,0,0,.18);color:var(--text);font-size:14px;outline:none}textarea{min-height:140px;resize:vertical}
+    .info{padding:24px}.pill{display:inline-flex;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:rgba(127,198,31,.12);border:1px solid rgba(127,198,31,.28);font-size:12px;font-weight:700;color:#efffd5}.hint{color:var(--muted);font-size:12px;line-height:1.7}
+    .info h2{margin:12px 0 10px;font-size:28px}.info p{margin:0;color:var(--muted);line-height:1.8}.list{display:grid;gap:10px;margin-top:18px}.point{padding:14px 15px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid var(--line)}.point b{display:block;margin-bottom:4px}
+    .footer{padding:28px 0 40px;color:var(--muted);font-size:13px}.divider{height:1px;background:var(--line)}
+    @media (max-width:980px){.wrap{grid-template-columns:1fr}.links{display:none}h1{font-size:38px}}
   </style>
 </head>
-
 <body>
-<header class="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">
-        <img src="logo.png" alt="CP BerryTech logo">
-        <div>
-          <strong>CP BerryTech</strong>
-          <small>Tecnología al servicio del campo</small>
-        </div>
-      </a>
-
-      <nav class="nav-links" aria-label="Navegación">
-        <a href="index.html#modulos">Módulos</a>
-        <a href="index.html#como">Cómo funciona</a>
-        <a href="precios.html">Precios</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
-
-      <a class="btn" href="precios.html">Ver planes</a>
-    </div>
-  </div>
-</header>
-
-<main>
-  <div class="container">
-    <h1>Contacto y demo</h1>
-    <p class="lead">
-      Cuéntanos sobre tu huerta en Colima: empleados, lotes y cómo pagas (por caja/tarea/jornal).
-      Te enviamos una propuesta con suscripción mensual por rancho.
-    </p>
-
-    <div class="contact">
-      <div>
-        <form class="form" onsubmit="return sendEmail(event)">
-          <input id="name" placeholder="Tu nombre" required />
-          <input id="ranch" placeholder="Nombre del rancho / huerta" />
-          <input id="location" placeholder="Ubicación (Colima)" value="Colima" />
-          <input id="phone" placeholder="Teléfono / WhatsApp" />
-          <input id="email" type="email" placeholder="Correo" required />
-          <textarea id="msg" required placeholder="Ej: 60 empleados, 12 lotes. Pago por caja y por tarea. Quiero control de inventario y conteo de cajas."></textarea>
-          <button class="btn" type="submit">Enviar</button>
-          <div class="hint">*Abre tu app de correo (mailto). Para WhatsApp, usa el botón.</div>
-        </form>
-      </div>
-
-      <div class="card">
-        <h3 style="margin-top:0">📞 Ventas CP BerryTech</h3>
-        <p class="lead" style="margin:10px 0 14px">
-          Demo + propuesta + implementación. Suscripción mensual por rancho.
-        </p>
-        <ul>
-          <li><b>Email:</b> cpberrytech@gmail.com</li>
-          <li><b>Ubicación:</b> Colima, México</li>
-          <li><b>Incluye:</b> capacitación y soporte</li>
-        </ul>
-
-        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
-          <!-- Cambia el número por el tuyo con código país 52 -->
-          <a class="btn" target="_blank" rel="noreferrer"
-             href="https://wa.me/523349834257?text=Hola%2C%20quiero%20una%20demo%20de%20CP%20BerryTech%20para%20mi%20rancho%20en%20Colima">
-            WhatsApp
-          </a>
-          <a class="btn secondary" href="index.html">Inicio</a>
-        </div>
-
-        <p class="hint" style="margin-top:12px">
-          Recomendación: agrega aquí tus redes (Facebook/Instagram) si venderás localmente en Colima.
-        </p>
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <img src="logo.png" alt="Logo de CP BerryTech">
+          <div><b>CP BerryTech</b><span>Tecnología al servicio del campo</span></div>
+        </a>
+        <nav class="links" aria-label="Navegación principal">
+          <a href="index.html#beneficios">Beneficios</a>
+          <a href="precios.html">Planes</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+        <a class="btn" href="precios.html">Ver planes</a>
       </div>
     </div>
-  </div>
-</main>
+  </header>
 
-<footer class="footer">
-  <div class="container">
-    <hr class="divider" style="margin-bottom:18px"/>
-    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="year"></span> CP BerryTech — Colima.</div>
-      <div>Tecnología al servicio del campo 🍓</div>
+  <main>
+    <div class="container">
+      <div class="hero">
+        <img src="logo.png" alt="CP BerryTech">
+        <h1>Hablemos de tu huerta</h1>
+        <p class="lead">Cuéntanos qué necesitas controlar y te mostramos la mejor forma de comenzar con CP BerryTech de manera práctica, clara y profesional.</p>
+      </div>
+
+      <div class="wrap">
+        <section class="box">
+          <form class="form" onsubmit="return sendEmail(event)">
+            <input id="name" placeholder="Tu nombre" required>
+            <input id="ranch" placeholder="Nombre del rancho o huerta">
+            <input id="location" placeholder="Ubicación">
+            <input id="phone" placeholder="Teléfono o WhatsApp">
+            <input id="email" type="email" placeholder="Correo" required>
+            <select id="interest">
+              <option value="Quiero una demo">Quiero una demo</option>
+              <option value="Quiero información de planes">Quiero información de planes</option>
+              <option value="Quiero una cotización">Quiero una cotización</option>
+            </select>
+            <textarea id="msg" placeholder="Ejemplo: Quiero organizar mejor las actividades, el personal y los reportes de mi huerta." required></textarea>
+            <button class="btn" type="submit">Enviar solicitud</button>
+            <div class="hint">Se abrirá tu aplicación de correo con el mensaje listo para enviar.</div>
+          </form>
+        </section>
+
+        <aside class="info">
+          <div class="pill">🍓 Atención personalizada</div>
+          <h2>Una propuesta pensada para tu operación</h2>
+          <p>La idea es entender lo que pasa en tu huerta y proponerte una solución que realmente te ayude a trabajar con más orden, más control y mejor visibilidad.</p>
+
+          <div class="list">
+            <div class="point">
+              <b>Demo enfocada en tu realidad</b>
+              <span>Te mostramos cómo se vería CP BerryTech aplicado a tu forma de trabajo.</span>
+            </div>
+            <div class="point">
+              <b>Explicación clara</b>
+              <span>Hablamos en términos simples, pensando en lo que el cliente necesita ver y entender.</span>
+            </div>
+            <div class="point">
+              <b>Propuesta adaptable</b>
+              <span>Se puede empezar con lo necesario y crecer conforme la operación lo requiera.</span>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">
+            <a class="btn" target="_blank" rel="noreferrer" href="https://wa.me/523349834257?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20CP%20BerryTech%20para%20mi%20huerta">WhatsApp</a>
+            <a class="btn alt" href="index.html">Volver al inicio</a>
+          </div>
+
+          <p class="hint" style="margin-top:14px">Correo de contacto: cpberrytech@gmail.com</p>
+        </aside>
+      </div>
     </div>
-  </div>
-</footer>
+  </main>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-  function sendEmail(e){
-    e.preventDefault();
-    const name = document.getElementById("name").value.trim();
-    const ranch = document.getElementById("ranch").value.trim();
-    const location = document.getElementById("location").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const msg = document.getElementById("msg").value.trim();
+  <footer class="footer">
+    <div class="container">
+      <div class="divider" style="margin-bottom:18px"></div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <span id="year"></span> CP BerryTech — Colima</div>
+        <div>Tecnología al servicio del campo 🍓</div>
+      </div>
+    </div>
+  </footer>
 
-    const subject = encodeURIComponent("Solicitud de demo — CP BerryTech");
-    const body = encodeURIComponent(
-      `Nombre: ${name}\nRancho/Huerta: ${ranch}\nUbicación: ${location}\nTeléfono: ${phone}\nCorreo: ${email}\n\nMensaje:\n${msg}\n`
-    );
-
-    window.location.href = `mailto:contacto@cpberrytech.com?subject=${subject}&body=${body}`;
-    return false;
-  }
-</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function sendEmail(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const ranch = document.getElementById('ranch').value.trim();
+      const location = document.getElementById('location').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const interest = document.getElementById('interest').value;
+      const msg = document.getElementById('msg').value.trim();
+      const subject = encodeURIComponent('Solicitud de información — CP BerryTech');
+      const body = encodeURIComponent(`Nombre: ${name}\nRancho/Huerta: ${ranch}\nUbicación: ${location}\nTeléfono: ${phone}\nCorreo: ${email}\nInterés: ${interest}\n\nMensaje:\n${msg}`);
+      window.location.href = `mailto:cpberrytech@gmail.com?subject=${subject}&body=${body}`;
+      return false;
+    }
+  </script>
 </body>
 </html>

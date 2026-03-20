@@ -3,225 +3,159 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Precios — CP BerryTech</title>
-  <meta name="description" content="Planes por rancho: suscripción mensual para tareas, nómina, inventario, conteo de cajas y reportes." />
+  <title>Planes | CP BerryTech</title>
+  <meta name="description" content="Conoce los planes de CP BerryTech para huertas de berries. Soluciones claras, profesionales y adaptables al tamaño de tu operación." />
   <style>
     :root{
-      --bg:#0b1220; --muted:#a9b4d0; --text:#eaf0ff;
-      --accent:#34d399; --accent2:#60a5fa; --border:rgba(255,255,255,.10);
-      --shadow: 0 18px 60px rgba(0,0,0,.35); --radius: 18px;
+      --bg:#050910;--bg-soft:#0a1421;--text:#eef5ff;--muted:#bfd0e6;--line:rgba(255,255,255,.10);
+      --card:rgba(255,255,255,.06);--green:#7fc61f;--blue:#2456b8;--radius:24px;--shadow:0 24px 70px rgba(0,0,0,.38)
     }
     *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(1200px 600px at 20% 0%, rgba(52,211,153,.25), transparent 60%),
-        radial-gradient(1000px 500px at 85% 10%, rgba(96,165,250,.22), transparent 55%),
-        linear-gradient(180deg, #070b15 0%, var(--bg) 55%, #050814 100%);
-    }
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
-    .nav{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter: blur(10px);
-      background: rgba(7,11,21,.65);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .brand img{
-      width:58px;height:58px;border-radius:12px;object-fit:contain;
-      background: rgba(255,255,255,.92);
-      border: 1px solid rgba(0,0,0,.10);padding:8px;
-    }
-    .brand strong{font-size:16px}
-    .brand small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-    .nav-links{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-    .nav-links a{text-decoration:none;color:var(--muted);font-size:14px}
-    .nav-links a:hover{color:var(--text)}
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      padding:10px 14px;border-radius:14px;
-      background: linear-gradient(135deg, rgba(52,211,153,.95), rgba(96,165,250,.95));
-      color:#06101f;font-weight:800;text-decoration:none;border:none;
-      box-shadow: 0 10px 30px rgba(52,211,153,.18);
-      white-space:nowrap;
-    }
-    .btn.secondary{
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      border:1px solid var(--border);
-      box-shadow:none;font-weight:700;
-    }
-    main{padding:48px 0 16px}
-    h1{margin:0 0 10px;font-size:38px;letter-spacing:-.5px}
-    .lead{color:var(--muted);font-size:16px;line-height:1.6;margin:0 0 18px}
-    .divider{height:1px;background: var(--border);margin:0}
-    .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-    .card{
-      background: rgba(255,255,255,.04);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding:16px;
-      box-shadow: none;
-    }
-    .badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:6px 10px;border-radius:999px;
-      background: rgba(52,211,153,.12);
-      border:1px solid rgba(52,211,153,.25);
-      color:#c8ffe9;font-size:12px;
-    }
-    .price{display:flex;align-items:baseline;gap:10px;margin:10px 0 0}
-    .price b{font-size:30px}
-    .price span{color:var(--muted);font-size:13px}
-    ul{margin:10px 0 0;padding-left:18px;color:var(--muted);line-height:1.9}
-    ul b{color:var(--text)}
-    .note{color:var(--muted);font-size:13px;line-height:1.7;margin-top:14px}
-    .footer{padding:24px 0 40px;color:var(--muted);font-size:13px}
-    @media (max-width: 980px){
-      .cards3{grid-template-columns:1fr}
-      .nav-links{display:none}
-    }
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:radial-gradient(900px 500px at 10% 0%, rgba(127,198,31,.20), transparent 58%),radial-gradient(900px 500px at 90% 10%, rgba(36,86,184,.24), transparent 58%),linear-gradient(180deg,#02050a 0%,var(--bg) 45%,var(--bg-soft) 100%)}
+    img{max-width:100%;display:block} a{color:inherit;text-decoration:none}.container{max-width:1180px;margin:0 auto;padding:0 22px}
+    .nav{position:sticky;top:0;z-index:70;background:rgba(3,7,12,.76);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}.brand{display:flex;align-items:center;gap:12px}.brand img{width:66px;height:66px;object-fit:contain;border-radius:18px;background:rgba(255,255,255,.96);padding:8px}.brand b{display:block;font-size:18px}.brand span{display:block;font-size:12px;color:var(--muted)}
+    .links{display:flex;gap:18px;flex-wrap:wrap}.links a{font-size:14px;color:var(--muted)}.links a:hover{color:var(--text)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:16px;font-weight:800;background:linear-gradient(135deg,var(--green),var(--blue));color:#fff}.btn.alt{background:rgba(255,255,255,.05);border:1px solid var(--line)}
+    main{padding:50px 0 26px}.hero{text-align:center;max-width:860px;margin:0 auto 24px}.hero img{width:min(420px,92vw);margin:0 auto 14px;filter:drop-shadow(0 18px 40px rgba(0,0,0,.45))}
+    h1{margin:0 0 12px;font-size:46px;letter-spacing:-.8px}.lead{margin:0;color:var(--muted);line-height:1.8;font-size:17px}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+    .plan,.compare,.cta{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .plan{padding:22px;position:relative}
+    .badge{position:absolute;top:16px;right:16px;padding:7px 10px;border-radius:999px;background:rgba(127,198,31,.14);border:1px solid rgba(127,198,31,.28);font-size:12px;font-weight:700;color:#efffd5}
+    .plan h2{margin:0 0 8px;font-size:28px}.plan .desc{color:var(--muted);line-height:1.7;font-size:15px;min-height:76px}
+    .price{font-size:40px;font-weight:900;margin:16px 0 4px}.small{font-size:13px;color:var(--muted)}
+    ul{margin:18px 0 0;padding-left:18px;color:var(--muted);line-height:1.9} ul b{color:var(--text)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+    .compare{padding:22px;margin-top:22px;overflow:auto}
+    table{width:100%;border-collapse:collapse;min-width:720px} th,td{padding:14px 12px;border-bottom:1px solid var(--line);text-align:left} th{color:#fff;font-size:14px} td{color:var(--muted)}
+    .cta{padding:24px;margin-top:24px;display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}
+    .cta h3{margin:0 0 8px;font-size:28px}.cta p{margin:0;color:var(--muted);line-height:1.7;max-width:700px}
+    .footer{padding:28px 0 40px;color:var(--muted);font-size:13px}.divider{height:1px;background:var(--line)}
+    @media (max-width:980px){.plans{grid-template-columns:1fr}.links{display:none}h1{font-size:38px}}
   </style>
 </head>
-
 <body>
-<header class="nav">
-  <div class="container">
-    <div class="nav-inner">
-      <a class="brand" href="index.html">
-        <img src="logo.png" alt="CP BerryTech logo">
-        <div>
-          <strong>CP BerryTech</strong>
-          <small>Tecnología al servicio del campo</small>
-        </div>
-      </a>
-
-      <nav class="nav-links" aria-label="Navegación">
-        <a href="index.html#modulos">Módulos</a>
-        <a href="index.html#como">Cómo funciona</a>
-        <a href="precios.html">Precios</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
-
-      <a class="btn" href="contacto.html">Solicitar demo</a>
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <img src="logo.png" alt="Logo de CP BerryTech">
+          <div><b>CP BerryTech</b><span>Tecnología al servicio del campo</span></div>
+        </a>
+        <nav class="links" aria-label="Navegación principal">
+          <a href="index.html#beneficios">Beneficios</a>
+          <a href="index.html#solucion">Qué resuelve</a>
+          <a href="precios.html">Planes</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+        <a class="btn" href="contacto.html">Solicitar cotización</a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<main>
-  <div class="container">
-    <h1>Planes por rancho (suscripción mensual)</h1>
-    <p class="lead">
-      Cobra por rancho y escala por complejidad. Puedes poner precios fijos o “desde” según tamaño (empleados/lotes).
-      Precios por rancho. Si tu operación es muy grande (muchos empleados/lotes), ajustamos por tamaño.
-    </p>
-
-        <div class="cards3">
-      <!-- BÁSICO -->
-      <div class="card">
-        <div class="badge">Básico</div>
-        <div class="price"><b>$900</b><span>/ mes por rancho</span></div>
-        <div class="note" style="margin-top:8px"><b>Instalación:</b> $8,000 MXN (única)</div>
-        <p class="lead" style="margin-top:10px">Para ordenar información y empezar a operar con control.</p>
-        <ul>
-          <li><b>Empleados</b> (altas/bajas)</li>
-          <li><b>Lotes</b> y <b>labores</b> (catálogos)</li>
-          <li><b>Tareas del día</b> (asignación por fecha)</li>
-          <li><b>Conteo de cajas</b> (captura básica)</li>
-          <li><b>Reportes básicos</b> y exportación simple</li>
-        </ul>
-        <div style="margin-top:14px">
-          <a class="btn secondary" href="contacto.html">Cotizar</a>
-        </div>
+  <main>
+    <div class="container">
+      <div class="hero">
+        <img src="logo.png" alt="CP BerryTech">
+        <h1>Planes pensados para el tamaño de tu operación</h1>
+        <p class="lead">El cliente solo necesita ver algo claro: una opción para empezar, otra para crecer con más control y una solución más completa para operaciones que ya buscan mayor organización y visibilidad.</p>
       </div>
 
-      <!-- PRO -->
-      <div class="card" style="border-color: rgba(52,211,153,.35)">
-        <div class="badge">Pro (recomendado)</div>
-        <div class="price"><b>$1,200</b><span>/ mes por rancho</span></div>
-        <div class="note" style="margin-top:8px"><b>Instalación:</b> $12,000 MXN (única)</div>
-        <p class="lead" style="margin-top:10px">Operación completa en campo + checador y producción.</p>
-        <ul>
-          <li>Todo lo de Básico</li>
-          <li><b>Kiosko / checador</b> (tablet)</li>
-          <li><b>RFID/NFC</b> para checado rápido</li>
-          <li><b>Modo offline</b> (funciona sin internet)</li>
-          <li><b>Registro de cajas</b> por empleado/lote/turno</li>
-          <li><b>Nómina básica</b> (por caja / tarea / jornal)</li>
-          <li><b>Respaldo y sincronización</b> a nube (AWS)</li>
-        </ul>
-        <div style="margin-top:14px">
-          <a class="btn" href="contacto.html">Solicitar demo</a>
-        </div>
-      </div>
+      <section class="plans">
+        <article class="plan">
+          <h2>Esencial</h2>
+          <p class="desc">Para huertas que quieren dar el primer paso y comenzar a trabajar con más orden.</p>
+          <div class="price">Desde $</div>
+          <div class="small">Cotización personalizada según tu operación</div>
+          <ul>
+            <li><b>Control básico</b> de actividades y personal</li>
+            <li><b>Registro ordenado</b> de información diaria</li>
+            <li><b>Consulta simple</b> de avances y movimientos</li>
+            <li><b>Ideal para empezar</b> sin complicaciones</li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="contacto.html">Me interesa</a>
+          </div>
+        </article>
 
-      <!-- ENTERPRISE -->
-      <div class="card">
-        <div class="badge">Enterprise</div>
-        <div class="price"><b>$2,500</b><span>/ mes por rancho</span></div>
-        <div class="note" style="margin-top:8px"><b>Instalación:</b> $15,000 MXN (única)</div>
-        <p class="lead" style="margin-top:10px">Para huertas grandes o multi-rancho con control avanzado.</p>
-        <ul>
-          <li>Todo lo de Pro</li>
-          <li><b>Nómina avanzada</b> (reglas y tarifas por labor)</li>
-          <li><b>Reportes avanzados</b> (rendimiento, costos, comparativos)</li>
-          <li><b>Auditoría</b> (historial de cambios)</li>
-          <li><b>Soporte prioritario</b></li>
-          <li><b>Personalización</b> según procesos del rancho</li>
-        </ul>
-        <div style="margin-top:14px">
-          <a class="btn secondary" href="contacto.html">Hablar con ventas</a>
-        </div>
-      </div>
-    </div></div>
+        <article class="plan">
+          <div class="badge">Más solicitado</div>
+          <h2>Profesional</h2>
+          <p class="desc">Para ranchos que quieren más claridad en actividades, pagos, inventario y seguimiento diario.</p>
+          <div class="price">Desde $$</div>
+          <div class="small">Cotización personalizada según el tamaño del rancho</div>
+          <ul>
+            <li><b>Mayor control</b> de operación diaria</li>
+            <li><b>Seguimiento</b> de actividades, personal e insumos</li>
+            <li><b>Reportes útiles</b> para revisar avances y gastos</li>
+            <li><b>Una imagen más profesional</b> para la administración del rancho</li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="contacto.html">Quiero este plan</a>
+          </div>
+        </article>
 
-    <p class="note">
-      <b>Notas:</b> Los precios son por rancho e incluyen capacitación inicial y soporte según el plan. El hardware (PC servidor, tablet y tarjetas RFID) se cotiza por separado. Si tu rancho es muy grande (muchos lotes/empleados), podemos ajustar el plan.
-    </p>
+        <article class="plan">
+          <h2>Integral</h2>
+          <p class="desc">Para operaciones que desean una solución más completa y una base sólida para seguir creciendo.</p>
+          <div class="price">Desde $$$</div>
+          <div class="small">Se adapta a procesos, tamaño y alcance de la operación</div>
+          <ul>
+            <li><b>Visión más completa</b> de la huerta</li>
+            <li><b>Más herramientas</b> para control y seguimiento</li>
+            <li><b>Más capacidad</b> para evolucionar con el tiempo</li>
+            <li><b>Enfoque profesional</b> para operaciones más exigentes</li>
+          </ul>
+          <div class="actions">
+            <a class="btn" href="contacto.html">Solicitar propuesta</a>
+          </div>
+        </article>
+      </section>
 
-    <div class="card" style="margin-top:14px">
-      <h2 style="margin:0 0 8px;font-size:22px">Comparativa rápida</h2>
-      <div style="overflow:auto">
-        <table style="width:100%;border-collapse:collapse;font-size:13px;color:var(--muted)">
+      <section class="compare">
+        <h2 style="margin:0 0 12px;font-size:26px">Comparativa general</h2>
+        <table>
           <thead>
-            <tr style="text-align:left;color:var(--text)">
-              <th style="padding:10px;border-bottom:1px solid var(--border)">Función</th>
-              <th style="padding:10px;border-bottom:1px solid var(--border)">Básico</th>
-              <th style="padding:10px;border-bottom:1px solid var(--border)">Pro</th>
-              <th style="padding:10px;border-bottom:1px solid var(--border)">Enterprise</th>
+            <tr>
+              <th>Aspecto</th>
+              <th>Esencial</th>
+              <th>Profesional</th>
+              <th>Integral</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td style="padding:10px;border-bottom:1px solid var(--border)">Empleados / Lotes / Labores</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td></tr>
-            <tr><td style="padding:10px;border-bottom:1px solid var(--border)">Tareas del día</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td></tr>
-            <tr><td style="padding:10px;border-bottom:1px solid var(--border)">Kiosko / checador</td><td style="padding:10px;border-bottom:1px solid var(--border)">—</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td></tr>
-            <tr><td style="padding:10px;border-bottom:1px solid var(--border)">RFID/NFC</td><td style="padding:10px;border-bottom:1px solid var(--border)">—</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td></tr>
-            <tr><td style="padding:10px;border-bottom:1px solid var(--border)">Modo offline</td><td style="padding:10px;border-bottom:1px solid var(--border)">—</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td></tr>
-            <tr><td style="padding:10px;border-bottom:1px solid var(--border)">Registro de cajas</td><td style="padding:10px;border-bottom:1px solid var(--border)">—</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td><td style="padding:10px;border-bottom:1px solid var(--border)">✅</td></tr>
-            <tr><td style="padding:10px;border-bottom:1px solid var(--border)">Nómina</td><td style="padding:10px;border-bottom:1px solid var(--border)">—</td><td style="padding:10px;border-bottom:1px solid var(--border)">Básica</td><td style="padding:10px;border-bottom:1px solid var(--border)">Avanzada</td></tr>
-            <tr><td style="padding:10px">Soporte</td><td style="padding:10px">Básico</td><td style="padding:10px">Normal</td><td style="padding:10px">Prioritario</td></tr>
+            <tr><td>Orden de la operación</td><td>Bueno</td><td>Muy bueno</td><td>Completo</td></tr>
+            <tr><td>Seguimiento diario</td><td>Básico</td><td>Más claro</td><td>Más amplio</td></tr>
+            <tr><td>Visibilidad de información</td><td>Inicial</td><td>Mejorada</td><td>Avanzada</td></tr>
+            <tr><td>Enfoque de crecimiento</td><td>Empezar</td><td>Consolidar</td><td>Expandir</td></tr>
+            <tr><td>Ideal para</td><td>Huertas pequeñas</td><td>Ranchos en crecimiento</td><td>Operaciones más completas</td></tr>
           </tbody>
         </table>
+      </section>
+
+      <section class="cta">
+        <div>
+          <h3>Te ayudamos a elegir el plan correcto</h3>
+          <p>No se trata de venderte de más. La idea es proponerte una opción que sí se ajuste a tu forma de trabajar y a lo que realmente necesita tu huerta.</p>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn" href="contacto.html">Solicitar asesoría</a>
+          <a class="btn alt" href="index.html">Volver al inicio</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="divider" style="margin-bottom:18px"></div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <span id="year"></span> CP BerryTech — Colima</div>
+        <div>Tecnología al servicio del campo 🍓</div>
       </div>
     </div>
-  </div>
-</main>
-
-<footer class="footer">
-  <div class="container">
-    <hr class="divider" style="margin-bottom:18px"/>
-    <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="year"></span> CP BerryTech — Colima.</div>
-      <div>Tecnología al servicio del campo 🍓</div>
-    </div>
-  </div>
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
