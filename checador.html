@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+  <title>Checador — CP BerryTech</title>
+  <!-- Sin fuentes externas: funciona sin internet -->
+  <style>
+    :root {
+      --bg: #030a05;
+      --green: #22c55e;
+      --green2: #4ade80;
+      --green-dim: rgba(34,197,94,.15);
+      --green-glow: rgba(34,197,94,.30);
+      --text: #f0fdf4;
+      --muted: #6b7280;
+      --card: rgba(255,255,255,.05);
+      --line: rgba(255,255,255,.08);
+      --font: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      font-family: var(--font); -webkit-font-smoothing: antialiased;
+      background: var(--bg); color: var(--text);
+      /* Prevenir selección de texto en modo quiosco */
+      user-select: none; -webkit-user-select: none;
+    }
+
+    /* ============ ESTADO INACTIVO ============ */
+    #idle {
+      position: fixed; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 0; transition: opacity .4s;
+      background:
+        radial-gradient(ellipse 600px 400px at 50% 30%, rgba(34,197,94,.12), transparent 60%),
+        var(--bg);
+    }
+    #idle.hidden { opacity: 0; pointer-events: none; }
+
+    .idle-logo {
+      width: 90px; height: 90px; object-fit: contain;
+      border-radius: 22px; background: rgba(255,255,255,.92); padding: 10px;
+      margin-bottom: 32px;
+      filter: drop-shadow(0 8px 24px rgba(34,197,94,.30));
+    }
+    .idle-title {
+      font-size: 42px; font-weight: 900; letter-spacing: -1px;
+      color: var(--text); margin-bottom: 8px; text-align: center;
+    }
+    .idle-sub {
+      font-size: 20px; color: rgba(240,253,244,.55); margin-bottom: 40px; text-align: center;
+    }
+
+    /* Ícono RFID animado (pulso) */
+    .rfid-icon-wrap {
+      position: relative; width: 120px; height: 120px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 36px;
+    }
+    .rfid-pulse {
+      position: absolute; inset: 0; border-radius: 50%;
+      border: 2px solid var(--green);
+      animation: pulse 2s ease-out infinite;
+    }
+    .rfid-pulse:nth-child(2) { animation-delay: .7s; }
+    .rfid-pulse:nth-child(3) { animation-delay: 1.4s; }
+    @keyframes pulse {
+      0%   { transform: scale(.6); opacity: .8; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    .rfid-inner {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--green-dim); border: 2px solid var(--green);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; position: relative; z-index: 1;
+    }
+
+    .idle-prompt {
+      font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 12px; text-align: center;
+    }
+    .idle-hint {
+      font-size: 16px; color: var(--muted); text-align: center;
+    }
+
+    /* Reloj */
+    .clock-wrap { position: absolute; bottom: 40px; text-align: center; }
+    .clock-time { font-size: 56px; font-weight: 900; letter-spacing: -2px; color: rgba(240,253,244,.90); font-variant-numeric: tabular-nums; }
+    .clock-date { font-size: 18px; color: var(--muted); margin-top: 4px; }
+
+    /* CP BerryTech badge (esquina) */
+    .brand-badge {
+      position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 16px; border-radius: 999px;
+      background: rgba(34,197,94,.10); border: 1px solid rgba(34,197,94,.20);
+      font-size: 14px; font-weight: 600; color: rgba(240,253,244,.70);
+    }
+
+    /* ============ ESTADO ACTIVO (check-in) ============ */
+    #active {
+      position: fixed; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0;
+      opacity: 0; pointer-events: none;
+      transition: opacity .4s;
+      background:
+        radial-gradient(ellipse 700px 500px at 50% 30%, rgba(34,197,94,.18), transparent 60%),
+        var(--bg);
+    }
+    #active.shown {
+      opacity: 1; pointer-events: auto;
+    }
+
+    /* Animación de entrada */
+    .active-inner {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 0; transform: scale(.94) translateY(12px); opacity: 0;
+      transition: transform .45s cubic-bezier(.22,1,.36,1), opacity .4s;
+    }
+    #active.shown .active-inner {
+      transform: scale(1) translateY(0); opacity: 1;
+    }
+
+    /* Check grande */
+    .big-check {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; margin-bottom: 20px;
+      box-shadow: 0 0 50px rgba(34,197,94,.45);
+      animation: bounceIn .5s cubic-bezier(.22,1,.36,1) both;
+    }
+    @keyframes bounceIn { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    /* Texto de estado */
+    .status-text {
+      font-size: 32px; font-weight: 900; letter-spacing: -.5px;
+      color: var(--green2); margin-bottom: 24px; text-align: center;
+    }
+    .status-text.salida { color: #60a5fa; }
+
+    /* Avatar del empleado */
+    .avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, #15803d, #166534);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 30px; font-weight: 800; color: #bbf7d0;
+      border: 3px solid rgba(34,197,94,.40);
+      margin-bottom: 16px;
+    }
+    .avatar.salida { background: linear-gradient(135deg, #1d4ed8, #1e40af); color: #bfdbfe; border-color: rgba(96,165,250,.40); }
+
+    /* Info del empleado */
+    .emp-name { font-size: 38px; font-weight: 900; letter-spacing: -1px; text-align: center; margin-bottom: 6px; }
+    .emp-puesto { font-size: 18px; color: var(--muted); text-align: center; margin-bottom: 28px; }
+
+    /* Card de tarea */
+    .task-card {
+      background: rgba(34,197,94,.08); border: 1px solid rgba(34,197,94,.22);
+      border-radius: 20px; padding: 20px 28px; text-align: center; min-width: 360px; max-width: 480px;
+      margin-bottom: 20px;
+    }
+    .task-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--green); margin-bottom: 8px; }
+    .task-name { font-size: 24px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+    .task-block { font-size: 14px; color: var(--muted); }
+
+    /* Hora registrada */
+    .reg-hora {
+      font-size: 20px; font-weight: 700; color: var(--green2);
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* Barra de progreso para el auto-retorno */
+    .progress-bar {
+      position: fixed; bottom: 0; left: 0; height: 4px;
+      background: var(--green); width: 0; transition: none;
+    }
+
+    /* Error */
+    #error-msg {
+      position: fixed; top: 24px; right: 24px; z-index: 100;
+      padding: 12px 18px; border-radius: 12px;
+      background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.30);
+      font-size: 14px; color: #fca5a5; font-weight: 500;
+      opacity: 0; transition: opacity .3s; pointer-events: none;
+    }
+    #error-msg.shown { opacity: 1; }
+
+    /* Campo RFID oculto — siempre enfocado */
+    #rfidInput {
+      position: fixed; left: -9999px; top: -9999px;
+      width: 1px; height: 1px; opacity: 0;
+    }
+
+    /* Modo oscuro forzado */
+    @media (prefers-color-scheme: light) {
+      body { background: var(--bg) !important; color: var(--text) !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Campo RFID oculto: captura el input del lector como teclado -->
+  <input id="rfidInput" type="text" autocomplete="off" autocorrect="off"
+         spellcheck="false" tabindex="-1" aria-hidden="true" />
+
+  <!-- ============ ESTADO INACTIVO ============ -->
+  <div id="idle">
+    <div class="brand-badge">
+      <img src="logo.png" alt="CP BerryTech" style="width:24px;height:24px;border-radius:6px;background:rgba(255,255,255,.9);padding:2px;object-fit:contain">
+      CP BerryTech
+    </div>
+
+    <div class="rfid-icon-wrap">
+      <div class="rfid-pulse"></div>
+      <div class="rfid-pulse"></div>
+      <div class="rfid-pulse"></div>
+      <div class="rfid-inner">🪪</div>
+    </div>
+
+    <div class="idle-prompt">Acerca tu tarjeta o llavero</div>
+    <div class="idle-hint">El lector registrará tu asistencia automáticamente</div>
+
+    <div class="clock-wrap">
+      <div class="clock-time" id="clockTime">00:00</div>
+      <div class="clock-date" id="clockDate">--</div>
+    </div>
+  </div>
+
+  <!-- ============ ESTADO ACTIVO (al checar) ============ -->
+  <div id="active">
+    <div class="active-inner">
+      <div class="big-check" id="bigCheck">✓</div>
+      <div class="status-text" id="statusText">Entrada registrada</div>
+      <div class="avatar" id="empAvatar">JR</div>
+      <div class="emp-name" id="empName">Juan Ramos</div>
+      <div class="emp-puesto" id="empPuesto">Jornalero</div>
+      <div class="task-card">
+        <div class="task-label">Tu tarea de hoy</div>
+        <div class="task-name" id="taskName">Cosecha sector B-3</div>
+        <div class="task-block" id="taskBlock">Bloque 3 · Turno matutino</div>
+      </div>
+      <div class="reg-hora">🕐 <span id="regHora">07:42 AM</span></div>
+    </div>
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Mensaje de error -->
+  <div id="error-msg">No se pudo conectar con el servidor</div>
+
+  <script>
+    // =============================================
+    // CONFIGURACIÓN — Cambiar según la red del rancho
+    // =============================================
+    const SERVER_IP   = '192.168.1.1';  // IP del servidor local (cambiar según rancho)
+    const SERVER_PORT = 3000;
+    const SERVER_URL  = `http://${SERVER_IP}:${SERVER_PORT}`;
+    const DISPLAY_MS  = 4000;            // Milisegundos que se muestra la pantalla activa
+    const COOLDOWN_MS = 5000;            // Tiempo mínimo entre lecturas del mismo RFID
+
+    // =============================================
+    // RELOJ EN TIEMPO REAL
+    // =============================================
+    const diasSemana = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+    const meses      = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+    function actualizarReloj() {
+      const ahora  = new Date();
+      const horas  = String(ahora.getHours()).padStart(2,'0');
+      const mins   = String(ahora.getMinutes()).padStart(2,'0');
+      const diaSem = diasSemana[ahora.getDay()];
+      const dia    = ahora.getDate();
+      const mes    = meses[ahora.getMonth()];
+      const anio   = ahora.getFullYear();
+      document.getElementById('clockTime').textContent = `${horas}:${mins}`;
+      document.getElementById('clockDate').textContent = `${diaSem}, ${dia} de ${mes} de ${anio}`;
+    }
+    actualizarReloj();
+    setInterval(actualizarReloj, 1000);
+
+    // =============================================
+    // CAPTURA DE RFID
+    // =============================================
+    const rfidInput = document.getElementById('rfidInput');
+    let   rfidBuffer    = '';
+    const cooldownMap   = new Map(); // rfidCode → timestamp última lectura
+
+    // Mantener el foco en el campo oculto siempre
+    function mantenerFoco() { rfidInput.focus(); }
+    document.addEventListener('click',     mantenerFoco);
+    document.addEventListener('touchstart', mantenerFoco);
+    mantenerFoco();
+    setInterval(mantenerFoco, 3000); // Refuerzo cada 3 segundos
+
+    // Captura carácter a carácter (el lector envía como teclado)
+    rfidInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        // El lector RFID envía Enter al final del código
+        const codigo = rfidBuffer.trim();
+        rfidBuffer = '';
+        rfidInput.value = '';
+        if (codigo.length >= 4) procesarRFID(codigo);
+      } else if (e.key.length === 1) {
+        rfidBuffer += e.key;
+      }
+    });
+
+    // Alternativa: captura por evento input (algunos lectores)
+    rfidInput.addEventListener('input', () => {
+      const val = rfidInput.value;
+      if (val.includes('\n') || val.includes('\r')) {
+        const codigo = val.replace(/[\r\n]/g,'').trim();
+        rfidInput.value = '';
+        rfidBuffer = '';
+        if (codigo.length >= 4) procesarRFID(codigo);
+      }
+    });
+
+    // =============================================
+    // PROCESAR TARJETA RFID
+    // =============================================
+    let enMostrandoResultado = false;
+
+    async function procesarRFID(codigo) {
+      // Evitar doble registro mientras se muestra resultado
+      if (enMostrandoResultado) return;
+
+      // Cooldown: ignorar misma tarjeta por COOLDOWN_MS
+      const ahora = Date.now();
+      if (cooldownMap.has(codigo)) {
+        const diff = ahora - cooldownMap.get(codigo);
+        if (diff < COOLDOWN_MS) return;
+      }
+      cooldownMap.set(codigo, ahora);
+
+      try {
+        const res  = await fetch(`${SERVER_URL}/checador?rfid=${encodeURIComponent(codigo)}`, { signal: AbortSignal.timeout(5000) });
+        const data = await res.json();
+        mostrarEmpleado(data);
+      } catch (err) {
+        // Si no hay servidor, mostrar demo con datos del código
+        console.warn('Sin conexión al servidor, mostrando demo:', err.message);
+        mostrarDemo(codigo);
+      }
+    }
+
+    // =============================================
+    // MOSTRAR RESULTADO EN PANTALLA
+    // =============================================
+    function mostrarEmpleado(data) {
+      const esSalida = data.estado === 'salida';
+
+      // Actualizar elementos del DOM
+      document.getElementById('bigCheck').textContent       = esSalida ? '✓' : '✓';
+      document.getElementById('statusText').textContent     = esSalida ? 'Salida registrada' : 'Entrada registrada';
+      document.getElementById('statusText').className       = 'status-text' + (esSalida ? ' salida' : '');
+      document.getElementById('empAvatar').textContent      = data.foto_iniciales || data.nombre.substring(0,2).toUpperCase();
+      document.getElementById('empAvatar').className        = 'avatar' + (esSalida ? ' salida' : '');
+      document.getElementById('empName').textContent        = data.nombre;
+      document.getElementById('empPuesto').textContent      = data.puesto || '—';
+      document.getElementById('taskName').textContent       = data.tarea || 'Sin tarea asignada';
+      document.getElementById('taskBlock').textContent      = data.bloque || '—';
+      document.getElementById('regHora').textContent        = data.hora_entrada || horaActual();
+
+      mostrarPantallaActiva();
+    }
+
+    function mostrarDemo(codigo) {
+      // Pantalla de demo cuando no hay servidor conectado
+      document.getElementById('bigCheck').textContent   = '✓';
+      document.getElementById('statusText').textContent = 'Entrada registrada';
+      document.getElementById('statusText').className   = 'status-text';
+      document.getElementById('empAvatar').textContent  = '??';
+      document.getElementById('empAvatar').className    = 'avatar';
+      document.getElementById('empName').textContent    = `ID: ${codigo}`;
+      document.getElementById('empPuesto').textContent  = 'Verificando…';
+      document.getElementById('taskName').textContent   = 'Sin tarea asignada';
+      document.getElementById('taskBlock').textContent  = 'Conectar servidor para ver tarea';
+      document.getElementById('regHora').textContent    = horaActual();
+      mostrarPantallaActiva();
+    }
+
+    function mostrarPantallaActiva() {
+      enMostrandoResultado = true;
+      const idleEl    = document.getElementById('idle');
+      const activeEl  = document.getElementById('active');
+      const progressEl = document.getElementById('progressBar');
+
+      // Mostrar pantalla activa
+      idleEl.classList.add('hidden');
+      activeEl.classList.add('shown');
+
+      // Barra de progreso de retorno
+      progressEl.style.transition = 'none';
+      progressEl.style.width = '0%';
+      requestAnimationFrame(() => {
+        progressEl.style.transition = `width ${DISPLAY_MS}ms linear`;
+        progressEl.style.width = '100%';
+      });
+
+      // Regresar a inactivo después de DISPLAY_MS
+      setTimeout(() => {
+        activeEl.classList.remove('shown');
+        idleEl.classList.remove('hidden');
+        progressEl.style.width = '0%';
+        progressEl.style.transition = 'none';
+        enMostrandoResultado = false;
+        mantenerFoco();
+      }, DISPLAY_MS);
+    }
+
+    // =============================================
+    // UTILIDADES
+    // =============================================
+    function horaActual() {
+      const ahora = new Date();
+      const h  = String(ahora.getHours()).padStart(2,'0');
+      const m  = String(ahora.getMinutes()).padStart(2,'0');
+      const ampm = ahora.getHours() >= 12 ? 'PM' : 'AM';
+      const h12  = ahora.getHours() % 12 || 12;
+      return `${String(h12).padStart(2,'0')}:${m} ${ampm}`;
+    }
+
+    // Teclado físico: tecla Escape para reiniciar, F5 para recargar
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && enMostrandoResultado) {
+        document.getElementById('active').classList.remove('shown');
+        document.getElementById('idle').classList.remove('hidden');
+        document.getElementById('progressBar').style.width = '0%';
+        enMostrandoResultado = false;
+        mantenerFoco();
+      }
+    });
+
+    // Prevenir menú contextual en modo quiosco
+    document.addEventListener('contextmenu', e => e.preventDefault());
+  </script>
+</body>
+</html>

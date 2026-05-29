@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contacto | CP BerryTech</title>
+  <meta name="description" content="Pide información sobre CP BerryTech y descubre cómo puede ayudar a tu huerta con una solución clara, profesional y fácil de adoptar." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #040810; --bg2: #060f1e;
+      --card: rgba(255,255,255,.055); --card-h: rgba(255,255,255,.088);
+      --text: #eef5ff; --muted: #8aa4c8; --muted2: #bfd0e6;
+      --line: rgba(255,255,255,.08); --line2: rgba(255,255,255,.15);
+      --green: #7fc61f; --green2: #9ad932; --gdim: rgba(127,198,31,.12);
+      --blue: #2456b8; --blue2: #3570e0;
+      --r: 18px; --rl: 26px;
+      --sh: 0 20px 60px rgba(0,0,0,.50);
+      --max: 1200px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font); color: var(--text); background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 1100px 600px at 10% -8%, rgba(127,198,31,.17), transparent 55%),
+        radial-gradient(ellipse 1100px 600px at 88% 5%, rgba(36,86,184,.22), transparent 55%);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: var(--font); cursor: pointer; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .divider { height: 1px; background: var(--line); }
+
+    /* NAV */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(4,8,16,.85);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px) saturate(160%);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 13px 0; }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .brand img { width: 50px; height: 50px; object-fit: contain; border-radius: 13px; background: rgba(255,255,255,.95); padding: 6px; }
+    .brand b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -.3px; }
+    .brand span { display: block; font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 1px; }
+    .nav-links { display: flex; gap: 2px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); padding: 7px 12px; border-radius: 10px; transition: color .2s, background .2s; }
+    .nav-links a:hover { color: var(--text); background: rgba(255,255,255,.06); }
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 20px; border-radius: 13px; font-size: 14px; font-weight: 700;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: #fff; border: none; transition: opacity .2s, transform .15s;
+      box-shadow: 0 8px 24px rgba(36,86,184,.30);
+    }
+    .btn:hover { opacity: .88; transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn.ghost { background: rgba(255,255,255,.06); border: 1px solid var(--line2); box-shadow: none; }
+    .btn.ghost:hover { background: rgba(255,255,255,.10); }
+    .btn.wa {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      box-shadow: 0 8px 24px rgba(37,211,102,.25);
+    }
+    .ham {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; padding: 8px;
+    }
+    .ham span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }
+    .mob-menu { display: none; flex-direction: column; gap: 4px; padding: 8px 0 14px; border-top: 1px solid var(--line); }
+    .mob-menu.open { display: flex; }
+    .mob-menu a { font-size: 15px; font-weight: 500; color: var(--muted2); padding: 9px 12px; border-radius: 11px; }
+    .mob-menu a:hover { background: var(--card); color: var(--text); }
+    .mob-menu .btn { margin-top: 4px; }
+
+    /* PAGE HERO */
+    .page-hero { padding: 60px 0 44px; text-align: center; }
+    .lbl { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+    h1 { font-size: 46px; font-weight: 900; line-height: 1.08; letter-spacing: -1.2px; margin-bottom: 14px; }
+    .grad { background: linear-gradient(95deg, var(--green2) 0%, #b6ec50 28%, #9fbfff 58%, var(--blue2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .page-hero p { font-size: 17px; color: var(--muted2); line-height: 1.82; max-width: 680px; margin: 0 auto; }
+
+    /* MAIN LAYOUT */
+    .contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; padding: 0 0 60px; }
+
+    /* FORM */
+    .form-box {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--rl); box-shadow: var(--sh); padding: 28px;
+    }
+    .form-box h2 { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .form-box .sub { font-size: 14px; color: var(--muted); margin-bottom: 22px; line-height: 1.6; }
+    .form { display: grid; gap: 14px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label { font-size: 13px; font-weight: 600; color: var(--muted2); }
+    .field .req { color: var(--green2); margin-left: 2px; }
+    input, textarea, select {
+      width: 100%; padding: 13px 15px;
+      border-radius: 13px; border: 1px solid var(--line2);
+      background: rgba(255,255,255,.04); color: var(--text);
+      font-family: var(--font); font-size: 14px; font-weight: 500;
+      outline: none; transition: border-color .2s, background .2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: rgba(127,198,31,.40);
+      background: rgba(255,255,255,.07);
+    }
+    input::placeholder, textarea::placeholder { color: var(--muted); }
+    select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238aa4c8' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 38px; }
+    select option { background: #0a1628; color: var(--text); }
+    textarea { min-height: 130px; resize: vertical; line-height: 1.65; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-submit { margin-top: 4px; }
+    .form-submit .btn { width: 100%; padding: 14px 20px; font-size: 15px; }
+    .form-hint { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 8px; text-align: center; }
+
+    /* INFO PANEL */
+    .info-box {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--rl); box-shadow: var(--sh); padding: 28px;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 13px; border-radius: 999px;
+      background: var(--gdim); border: 1px solid rgba(127,198,31,.26);
+      font-size: 12px; font-weight: 600; color: #d8f8a0; margin-bottom: 16px;
+    }
+    .info-box h2 { font-size: 22px; font-weight: 800; margin-bottom: 10px; line-height: 1.25; }
+    .info-box > p { font-size: 15px; color: var(--muted2); line-height: 1.78; margin-bottom: 22px; }
+    .points { display: grid; gap: 10px; margin-bottom: 24px; }
+    .point {
+      padding: 15px 16px; border-radius: 16px;
+      background: rgba(255,255,255,.04); border: 1px solid var(--line);
+      transition: border-color .2s, background .2s;
+    }
+    .point:hover { border-color: var(--line2); background: rgba(255,255,255,.07); }
+    .point b { display: block; font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .point span { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .contact-actions { display: flex; flex-direction: column; gap: 10px; }
+    .contact-actions .btn { justify-content: center; }
+    .info-hint { font-size: 12px; color: var(--muted); margin-top: 12px; line-height: 1.6; }
+    .info-hint a { color: var(--green2); }
+    .info-hint a:hover { text-decoration: underline; }
+
+    /* SUCCESS STATE */
+    .success-msg {
+      display: none; text-align: center; padding: 40px 20px;
+    }
+    .success-msg .check { font-size: 48px; margin-bottom: 12px; }
+    .success-msg h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+    .success-msg p { font-size: 15px; color: var(--muted2); line-height: 1.7; }
+
+    /* FOOTER */
+    .footer { padding: 42px 0 28px; border-top: 1px solid var(--line); }
+    .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 44px; margin-bottom: 32px; }
+    .foot-brand img { width: 46px; height: 46px; object-fit: contain; border-radius: 12px; background: rgba(255,255,255,.92); padding: 6px; margin-bottom: 11px; }
+    .foot-brand b { display: block; font-size: 16px; font-weight: 800; margin-bottom: 8px; }
+    .foot-brand p { font-size: 14px; color: var(--muted); line-height: 1.72; max-width: 300px; }
+    .foot-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 13px; }
+    .foot-col a { display: block; font-size: 14px; color: var(--muted2); margin-bottom: 9px; transition: color .2s; }
+    .foot-col a:hover { color: var(--text); }
+    .foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+
+    /* FADE */
+    .fu { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+    .fu.v { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1024px) {
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+      .foot-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 768px) {
+      .ham { display: flex; }
+      .nav-links, .nav-right .btn { display: none; }
+      h1 { font-size: 34px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .foot-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      h1 { font-size: 28px; }
+      .form-box, .info-box { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="index.html">
+          <img src="logo.png" alt="Logo CP BerryTech">
+          <div>
+            <b>CP BerryTech</b>
+            <span>Tecnología al servicio del campo</span>
+          </div>
+        </a>
+        <nav class="nav-links" aria-label="Navegación principal">
+          <a href="index.html#beneficios">Beneficios</a>
+          <a href="index.html#solucion">Qué resuelve</a>
+          <a href="precios.html">Planes</a>
+          <a href="contacto.html">Contacto</a>
+        </nav>
+        <div class="nav-right">
+          <a class="btn" href="precios.html">Ver planes</a>
+          <button class="ham" id="hamBtn" aria-label="Abrir menú">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <nav class="mob-menu" id="mobMenu" aria-label="Menú móvil">
+        <a href="index.html#beneficios">Beneficios</a>
+        <a href="index.html#solucion">Qué resuelve</a>
+        <a href="precios.html">Planes</a>
+        <a href="contacto.html">Contacto</a>
+        <a class="btn" href="precios.html">Ver planes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="page-hero fu">
+      <div class="container">
+        <span class="lbl">Contacto</span>
+        <h1>Hablemos de <span class="grad">tu huerta</span></h1>
+        <p>Cuéntanos qué necesitas controlar y te mostramos la mejor forma de empezar con CP BerryTech de manera práctica, clara y profesional.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="container">
+      <div class="contact-grid" style="margin-top:36px">
+
+        <!-- FORM -->
+        <section class="form-box fu">
+          <h2>Envíanos un mensaje</h2>
+          <p class="sub">Rellena el formulario y te contactamos a la brevedad. Sin compromisos.</p>
+
+          <form class="form" id="contactForm" onsubmit="return sendEmail(event)" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Nombre<span class="req">*</span></label>
+                <input id="name" type="text" placeholder="Tu nombre completo" required>
+              </div>
+              <div class="field">
+                <label for="ranch">Rancho o huerta</label>
+                <input id="ranch" type="text" placeholder="Nombre del rancho">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="field">
+                <label for="location">Ubicación</label>
+                <input id="location" type="text" placeholder="Ciudad o municipio">
+              </div>
+              <div class="field">
+                <label for="phone">Teléfono / WhatsApp</label>
+                <input id="phone" type="tel" placeholder="Ej. 312 000 0000">
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">Correo electrónico<span class="req">*</span></label>
+              <input id="email" type="email" placeholder="tucorreo@ejemplo.com" required>
+            </div>
+            <div class="field">
+              <label for="interest">¿En qué te podemos ayudar?</label>
+              <select id="interest">
+                <option value="Quiero una demo">Quiero una demo del sistema</option>
+                <option value="Quiero información de planes">Quiero información de planes</option>
+                <option value="Quiero una cotización">Quiero una cotización</option>
+                <option value="Tengo una pregunta">Tengo una pregunta específica</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="msg">Mensaje<span class="req">*</span></label>
+              <textarea id="msg" placeholder="Cuéntanos brevemente cómo trabaja tu huerta y qué te gustaría mejorar." required></textarea>
+            </div>
+            <div class="form-submit">
+              <button class="btn" type="submit">Enviar mensaje →</button>
+            </div>
+            <p class="form-hint">📧 Se abrirá tu app de correo con el mensaje listo para enviar a cpberrytech@gmail.com</p>
+          </form>
+        </section>
+
+        <!-- INFO PANEL -->
+        <aside class="info-box fu">
+          <div class="pill">🍓 Atención personalizada</div>
+          <h2>Una propuesta pensada para tu operación</h2>
+          <p>La idea es entender lo que pasa en tu huerta y proponerte una solución que realmente te ayude a trabajar con más orden, más control y mejor visibilidad.</p>
+
+          <div class="points">
+            <div class="point">
+              <b>🎯 Demo enfocada en tu realidad</b>
+              <span>Te mostramos cómo se vería CP BerryTech aplicado exactamente a tu forma de trabajo y operación.</span>
+            </div>
+            <div class="point">
+              <b>💬 Explicación clara y sin tecnicismos</b>
+              <span>Hablamos en términos simples, pensando en lo que el cliente necesita ver y entender para decidir.</span>
+            </div>
+            <div class="point">
+              <b>📐 Propuesta adaptable a ti</b>
+              <span>Puedes empezar con lo necesario y ampliar conforme la operación lo requiera, sin compromisos de largo plazo.</span>
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a class="btn wa" target="_blank" rel="noreferrer"
+               href="https://wa.me/523349834257?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20CP%20BerryTech%20para%20mi%20huerta">
+              💬 Escribir por WhatsApp
+            </a>
+            <a class="btn ghost" href="precios.html">Ver planes disponibles</a>
+            <a class="btn ghost" href="index.html">Volver al inicio</a>
+          </div>
+
+          <p class="info-hint">Correo: <a href="mailto:cpberrytech@gmail.com">cpberrytech@gmail.com</a><br>Tiempo de respuesta: menos de 24 horas hábiles.</p>
+        </aside>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <img src="logo.png" alt="CP BerryTech">
+          <b>CP BerryTech</b>
+          <p>Plataforma de gestión para huertas de berries. Orden, control y crecimiento desde el primer día.</p>
+          <p style="margin-top:10px;font-size:13px;color:var(--muted)">📍 Colima, México &nbsp;·&nbsp; 📧 cpberrytech@gmail.com</p>
+        </div>
+        <div class="foot-col">
+          <h4>Navegación</h4>
+          <a href="index.html#beneficios">Beneficios</a>
+          <a href="index.html#solucion">Qué resuelve</a>
+          <a href="index.html#como-funciona">Cómo funciona</a>
+          <a href="precios.html">Planes</a>
+          <a href="contacto.html">Contacto</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contacto</h4>
+          <a href="mailto:cpberrytech@gmail.com">cpberrytech@gmail.com</a>
+          <a href="https://wa.me/523349834257" target="_blank" rel="noreferrer">WhatsApp directo</a>
+          <a href="contacto.html">Solicitar demo</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="year"></span> CP BerryTech — Todos los derechos reservados</span>
+        <span>Tecnología al servicio del campo 🍓</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const hamBtn = document.getElementById('hamBtn');
+    const mobMenu = document.getElementById('mobMenu');
+    hamBtn.addEventListener('click', () => mobMenu.classList.toggle('open'));
+    mobMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobMenu.classList.remove('open')));
+
+    function sendEmail(e) {
+      e.preventDefault();
+      const name     = document.getElementById('name').value.trim();
+      const ranch    = document.getElementById('ranch').value.trim();
+      const location = document.getElementById('location').value.trim();
+      const phone    = document.getElementById('phone').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const interest = document.getElementById('interest').value;
+      const msg      = document.getElementById('msg').value.trim();
+      if (!name || !email || !msg) return;
+      const subject = encodeURIComponent('Solicitud de información — CP BerryTech');
+      const body = encodeURIComponent(
+        `Nombre: ${name}\nRancho/Huerta: ${ranch}\nUbicación: ${location}\nTeléfono: ${phone}\nCorreo: ${email}\nInterés: ${interest}\n\nMensaje:\n${msg}`
+      );
+      window.location.href = `mailto:cpberrytech@gmail.com?subject=${subject}&body=${body}`;
+      return false;
+    }
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.fu').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>

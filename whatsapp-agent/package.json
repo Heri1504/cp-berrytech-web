@@ -1,0 +1,22 @@
+{
+  "name": "cpberrytech-whatsapp-agent",
+  "version": "1.0.0",
+  "description": "Agente IA de WhatsApp para CP BerryTech — sistema de gestión para huertas",
+  "main": "agent.js",
+  "scripts": {
+    "start": "node agent.js",
+    "dev": "node --watch agent.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0",
+    "axios": "^1.7.0",
+    "dotenv": "^16.4.0",
+    "express": "^4.19.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["whatsapp", "bot", "anthropic", "claude", "agribusiness", "Mexico"],
+  "author": "CP BerryTech",
+  "license": "UNLICENSED"
+}
