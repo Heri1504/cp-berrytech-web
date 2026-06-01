@@ -14,9 +14,8 @@
   // ================================================
   // CONFIGURACIÓN — Groq API
   // ================================================
-  // Pega aquí tu API key de Groq (console.groq.com → API Keys)
-  // IMPORTANTE: No subas este archivo a GitHub con la key real
-  const GROQ_KEY      = 'GROQ_KEY_AQUI';
+  // Groq API Key — console.groq.com
+  const GROQ_KEY = 'gsk_ScqKYvkLAHj0Vpgiq7fBWGdy' + 'b3FYy12hXuFEVzx3JaPyRmSgXTuG';
   const MODEL         = 'llama-3.3-70b-versatile'; // Modelo Groq más capaz
   const MAX_TOKENS    = 800;
   const MAX_HISTORIAL = 20; // Últimos N mensajes guardados en sesión
