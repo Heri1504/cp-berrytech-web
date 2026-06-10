@@ -98,6 +98,23 @@
     .mob-menu a:hover { background: var(--card); color: var(--text); }
     .mob-menu .btn { margin-top: 4px; }
 
+    /* LOGO INTRO */
+    .logo-intro { background: var(--bg); padding: 80px 0 60px; text-align: center; }
+    .logo-intro-img {
+      width: 100%; max-width: 520px; margin: 0 auto; border-radius: 24px;
+      mix-blend-mode: screen;
+      opacity: 0; transform: scale(.85);
+      animation: logoIntroIn 1s ease forwards, logoIntroGlow 3.5s ease-in-out infinite;
+    }
+    @keyframes logoIntroIn {
+      from { opacity: 0; transform: scale(.85); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes logoIntroGlow {
+      0%, 100% { box-shadow: 0 0 60px 10px rgba(127,198,31,.18); }
+      50%      { box-shadow: 0 0 110px 36px rgba(127,198,31,.18); }
+    }
+
     /* HERO */
     .hero { padding: 64px 0 52px; }
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
@@ -246,6 +263,8 @@
       h2 { font-size: 28px; }
       .hero { padding: 44px 0 36px; }
       section { padding: 40px 0; }
+      .logo-intro { padding: 56px 0 40px; }
+      .logo-intro-img { max-width: 280px; border-radius: 18px; }
     }
   </style>
 </head>
@@ -257,7 +276,7 @@
         <a class="brand" href="index.html">
           <img src="logo.png" alt="Logo CP BerryTech">
           <div>
-            <b>CP BerryTech</b>
+            <b>CP BerryTech<sup style="font-size:10px;color:#7fc61f;">®</sup></b>
             <span>Tecnología al servicio del campo</span>
           </div>
         </a>
@@ -287,6 +306,13 @@
       </nav>
     </div>
   </header>
+
+  <!-- LOGO INTRO -->
+  <section id="logo-intro" class="logo-intro">
+    <div class="container">
+      <img class="logo-intro-img" src="Logo_CP_BERRYTECH.png" alt="CP BerryTech — Tecnología al servicio del campo">
+    </div>
+  </section>
 
   <main>
 
@@ -583,7 +609,7 @@
       <div class="foot-grid">
         <div class="foot-brand">
           <img src="logo.png" alt="CP BerryTech">
-          <b>CP BerryTech</b>
+          <b>CP BerryTech<sup style="font-size:10px;color:#7fc61f;">®</sup></b>
           <p>Sistema de gestión para huertas y ranchos de berries. Sin internet, sin mensualidades ocultas, instalado directo en tu rancho.</p>
           <p style="margin-top:10px;font-size:13px;color:var(--muted)">📍 Colima, México &nbsp;·&nbsp; 📧 cpberrytech@gmail.com</p>
         </div>
