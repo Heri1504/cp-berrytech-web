@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Precio del sistema | CP BerryTech — $28,500 MXN todo incluido</title>
-  <meta name="description" content="CP BerryTech: $28,500 MXN pago único. Incluye hardware, software, instalación presencial, capacitación y 1er mes de soporte. Sin internet requerido." />
+  <meta name="description" content="CP BerryTech: $28,500 MXN pago único. Incluye hardware, software, 11 módulos del sistema, instalación presencial, capacitación y 1er mes de soporte. Sin internet requerido." />
   <meta name="robots" content="index, follow" />
   <meta property="og:title" content="CP BerryTech — $28,500 MXN todo incluido" />
-  <meta property="og:description" content="Sistema completo de gestión para tu rancho. Un solo pago, instalación presencial, sin internet." />
+  <meta property="og:description" content="Sistema completo de gestión para tu rancho: 11 módulos, hardware, instalación presencial. Un solo pago, sin internet." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -112,6 +112,12 @@
     .sp-name { font-size: 28px; font-weight: 900; letter-spacing: -.5px; }
     .sp-tagline { font-size: 14px; color: var(--muted2); margin-top: 3px; }
     .sp-price-box { text-align: right; }
+    .launch-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px; margin-bottom: 8px; border-radius: 999px;
+      background: rgba(255,213,0,.12); border: 1px solid rgba(255,213,0,.30);
+      font-size: 12px; font-weight: 700; color: #ffe08a;
+    }
     .sp-price { font-size: 52px; font-weight: 900; letter-spacing: -2px; color: var(--green2); line-height: 1; }
     .sp-currency { font-size: 14px; color: var(--muted); margin-top: 4px; font-weight: 500; }
     .sp-maintenance { font-size: 14px; color: var(--muted2); margin-top: 8px; line-height: 1.5; border-top: 1px solid var(--line); padding-top: 8px; }
@@ -120,12 +126,13 @@
     .sp-div { height: 1px; background: var(--line); margin: 24px 0; }
 
     /* Grid de características */
-    .sp-features { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+    .sp-features { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 28px; }
     .sp-feat-title {
       font-size: 12px; font-weight: 700; text-transform: uppercase;
       letter-spacing: .07em; color: var(--muted); margin-bottom: 12px;
     }
     .sp-list { list-style: none; display: grid; gap: 8px; }
+    .sp-list.cols-2 { grid-template-columns: 1fr 1fr; gap: 8px 14px; }
     .sp-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; color: var(--muted2); line-height: 1.55; }
     .chk {
       width: 20px; height: 20px; border-radius: 6px; display: grid; place-items: center;
@@ -139,6 +146,10 @@
       background: rgba(255,213,0,.07); border: 1px solid rgba(255,213,0,.20);
       font-size: 14px; color: #ffe08a; font-weight: 500; line-height: 1.6;
     }
+    .sp-note + .sp-note { margin-top: 12px; }
+    .sp-note.info {
+      background: rgba(36,86,184,.08); border-color: rgba(36,86,184,.22); color: #bcd4ff;
+    }
 
     /* CTAs del plan */
     .sp-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
@@ -150,6 +161,20 @@
     }
     .rfid-note a { color: var(--green2); border-bottom: 1px solid rgba(154,217,50,.3); }
     .rfid-note a:hover { border-bottom-color: var(--green2); }
+
+    /* ADD-ON SENSORES */
+    .addon-section { padding: 0 0 60px; }
+    .addon-card {
+      max-width: 900px; margin: 0 auto;
+      padding: 28px 32px; border-radius: var(--rl);
+      background: var(--card); border: 1px solid var(--line); box-shadow: var(--sh);
+      display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .addon-card h3 { font-size: 19px; font-weight: 800; margin-bottom: 6px; }
+    .addon-card p { font-size: 14px; color: var(--muted2); line-height: 1.7; max-width: 480px; }
+    .addon-cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; flex-shrink: 0; }
+    .addon-price { font-size: 18px; font-weight: 800; color: var(--green2); white-space: nowrap; }
+    .addon-price span { display: block; font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 2px; }
 
     /* MANTENIMIENTO */
     .maint-section { padding: 0 0 60px; }
@@ -213,11 +238,14 @@
       .sp-header { flex-direction: column; align-items: flex-start; }
       .sp-price-box { text-align: left; }
       .sp-features { grid-template-columns: 1fr; }
+      .sp-list.cols-2 { grid-template-columns: 1fr; }
       .maint-features { grid-template-columns: 1fr; }
       .maint-header { flex-direction: column; }
       .maint-price { text-align: left; }
       .cta-banner { flex-direction: column; padding: 24px; }
       .single-plan { padding: 24px 20px; }
+      .addon-card { flex-direction: column; align-items: flex-start; }
+      .addon-cta { width: 100%; justify-content: space-between; }
       .foot-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
@@ -270,7 +298,7 @@
       <div class="container">
         <span class="lbl">Precio del sistema</span>
         <h1>Todo lo que necesitas,<br><span class="grad">en un solo pago</span></h1>
-        <p>Sin mensualidades escondidas, sin funciones recortadas, sin sorpresas. Un pago único y tienes el sistema completo instalado y funcionando en tu rancho desde el primer día.</p>
+        <p>Sin rentas obligatorias: el sistema es tuyo con un solo pago, sin funciones recortadas y sin sorpresas. Instalado y funcionando en tu rancho desde el primer día.</p>
       </div>
     </div>
 
@@ -290,12 +318,13 @@
               <img src="logo.png" alt="CP BerryTech" class="sp-logo">
               <div>
                 <div class="sp-name">CP BerryTech</div>
-                <div class="sp-tagline">Sistema completo de gestión para tu rancho</div>
+                <div class="sp-tagline">Sistema completo de gestión para 1 huerta o rancho</div>
               </div>
             </div>
             <div class="sp-price-box">
+              <span class="launch-badge">🚀 Precio de lanzamiento</span>
               <div class="sp-price">$28,500</div>
-              <div class="sp-currency">MXN &nbsp;·&nbsp; pago único</div>
+              <div class="sp-currency">MXN &nbsp;·&nbsp; pago único &nbsp;·&nbsp; por huerta</div>
               <div class="sp-maintenance">+ $1,200/mes mantenimiento<br>desde el 2° mes</div>
             </div>
           </div>
@@ -319,12 +348,17 @@
             <!-- Columna 2: Módulos -->
             <div>
               <div class="sp-feat-title">📱 Módulos del sistema</div>
-              <ul class="sp-list">
+              <ul class="sp-list cols-2">
                 <li><span class="chk">✓</span>Checador de asistencia con RFID</li>
+                <li><span class="chk">✓</span>Nómina automática calculada desde la asistencia</li>
                 <li><span class="chk">✓</span>Seguimiento de tareas diarias</li>
                 <li><span class="chk">✓</span>Control de pagos a empleados</li>
+                <li><span class="chk">✓</span>Control de cajas y cosecha por sector</li>
                 <li><span class="chk">✓</span>Inventario de insumos y aplicaciones</li>
+                <li><span class="chk">✓</span>Gestión de sectores y parcelas</li>
                 <li><span class="chk">✓</span>Reportes de gastos y avances</li>
+                <li><span class="chk">✓</span>Exportación de reportes a Excel</li>
+                <li><span class="chk">✓</span>Usuarios ilimitados con roles (Administrador, Supervisor, Trabajador)</li>
                 <li><span class="chk">✓</span>Personalización con tu logo y colores</li>
               </ul>
             </div>
@@ -347,6 +381,10 @@
             💡 <strong>Anticipo requerido:</strong> Se requiere el 50% al firmar el contrato ($14,250 MXN). El 50% restante se paga al finalizar la instalación en tu rancho.
           </div>
 
+          <div class="sp-note info">
+            📍 <strong>Precio por huerta o rancho:</strong> Este plan cubre 1 sola ubicación con su propia red local, hardware e instalación. Si tienes más de una huerta, cada una requiere su propio sistema — contáctanos para una cotización por varias ubicaciones.
+          </div>
+
           <div class="sp-ctas">
             <a class="btn wa" href="https://wa.me/523349834257?text=Hola%20CP%20BerryTech%2C%20me%20interesa%20el%20sistema%20para%20mi%20rancho%20%F0%9F%8C%B1" target="_blank" rel="noreferrer">
               💬 Quiero este sistema
@@ -363,6 +401,22 @@
       </div>
     </div>
 
+    <!-- ADD-ON: SENSORES -->
+    <div class="addon-section">
+      <div class="container">
+        <div class="addon-card fu">
+          <div>
+            <h3>📡 Expansión: Sensores de campo</h3>
+            <p>Monitorea humedad y temperatura de tus parcelas en tiempo real, directo en tu sistema.</p>
+          </div>
+          <div class="addon-cta">
+            <div class="addon-price">$1,500 <span>MXN por nodo instalado</span></div>
+            <a class="btn wa" href="https://wa.me/523349834257?text=Hola%2C%20me%20interesan%20los%20sensores%20de%20campo%20para%20mi%20rancho" target="_blank" rel="noreferrer">💬 Consultar sensores</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- MANTENIMIENTO -->
     <div class="maint-section">
       <div class="container">
@@ -370,7 +424,7 @@
           <div class="maint-header">
             <div class="maint-title">
               <h2>Plan de mantenimiento mensual</h2>
-              <p>Disponible desde el 2° mes de operación · Opcional pero recomendado</p>
+              <p>Tu primer mes va incluido con el sistema. Después, $1,200 MXN/mes para mantener tu sistema siempre al día, respaldado y con soporte directo.</p>
             </div>
             <div class="maint-price">
               <span class="num">$1,200</span>
@@ -411,7 +465,7 @@
         <div class="foot-brand">
           <img src="logo.png" alt="CP BerryTech">
           <b>CP BerryTech</b>
-          <p>Sistema de gestión para huertas y ranchos. Sin internet, sin mensualidades ocultas, instalado directo en tu rancho.</p>
+          <p>Sistema de gestión para huertas y ranchos. Sin internet. Sin rentas obligatorias: el sistema es tuyo con un solo pago, instalado directo en tu rancho.</p>
           <p style="margin-top:10px;font-size:13px;color:var(--muted)">📍 Colima, México &nbsp;·&nbsp; 📧 cpberrytech@gmail.com</p>
         </div>
         <div class="foot-col">

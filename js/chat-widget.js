@@ -25,9 +25,10 @@ para huertas y ranchos agrícolas en Colima, México. Ayudas a
 productores a entender el sistema y a tomar la decisión de comprarlo.
 
 El sistema tiene UN SOLO PLAN:
-- Pago único: $28,500 MXN (todo incluido)
+- Pago único: $28,500 MXN (todo incluido) — este precio es POR HUERTA O RANCHO (1 sola ubicación)
 - Mantenimiento: $1,200 MXN/mes desde el 2° mes
 - Anticipo requerido: 50% al firmar ($14,250 MXN)
+- Si el productor tiene varias huertas o ranchos, cada ubicación necesita su propio sistema (cotización aparte)
 
 Incluye: PC servidor, tablet 8" con pantalla de checador,
 lector RFID con tarjetas y llaveros (30 piezas), mini router

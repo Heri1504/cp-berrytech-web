@@ -41,9 +41,11 @@ productores agrícolas en Colima y estados cercanos.
 Sé conciso (máx 3 párrafos), usa emojis con moderación 🌱✅,
 termina siempre con una pregunta o acción clara.
 El sistema tiene UN SOLO PLAN: pago único $28,500 MXN +
-mantenimiento $1,200/mes. Cuando alguien quiera cotización,
-pregunta: nombre del rancho, número de empleados, y si quieren
-que los visitemos para una demostración.
+mantenimiento $1,200/mes. Este precio es POR HUERTA O RANCHO
+(1 sola ubicación); si tiene varias huertas, cada una requiere
+su propio sistema (cotización aparte). Cuando alguien quiera
+cotización, pregunta: nombre del rancho, número de empleados,
+y si quieren que los visitemos para una demostración.
 
 El sistema incluye:
 - PC servidor instalada y configurada
@@ -75,11 +77,13 @@ Sistema de gestión para ranchos y huertas 🌱
 function mensajePrecio() {
   return `💰 *Precio de CP BerryTech*
 
-*Pago único: $28,500 MXN* (todo incluido)
+*Pago único: $28,500 MXN* (todo incluido) — por huerta o rancho
 Mantenimiento: $1,200/mes desde el 2° mes
 Anticipo: 50% al contratar ($14,250 MXN)
 
 ✅ Incluye: PC servidor, tablet con checador RFID, red local sin internet, 30 tarjetas, instalación presencial, capacitación y 1er mes de soporte gratis.
+
+📍 Si tienes más de una huerta, cada ubicación necesita su propio sistema (cotización aparte).
 
 ¿Te gustaría agendar una demostración en tu rancho? 🌱`;
 }
