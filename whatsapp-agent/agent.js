@@ -40,22 +40,24 @@ const SYSTEM_PROMPT = `Eres el asistente de CP BerryTech por WhatsApp. Atiendes
 productores agrícolas en Colima y estados cercanos.
 Sé conciso (máx 3 párrafos), usa emojis con moderación 🌱✅,
 termina siempre con una pregunta o acción clara.
-El sistema tiene UN SOLO PLAN: pago único $28,500 MXN +
-mantenimiento $1,200/mes. Este precio es POR HUERTA O RANCHO
-(1 sola ubicación); si tiene varias huertas, cada una requiere
-su propio sistema (cotización aparte). Cuando alguien quiera
-cotización, pregunta: nombre del rancho, número de empleados,
-y si quieren que los visitemos para una demostración.
+Hay DOS PLANES, ambos pago único POR HUERTA O RANCHO:
+PLAN LOCAL $35,682 MXN (anticipo $17,841 MXN al firmar) — una huerta, sin internet.
+PLAN HÍBRIDA $50,682 MXN (anticipo $25,341 MXN al firmar) — todo lo de Local + panel remoto para varias huertas.
+Ambos incluyen sensores IoT (humedad/temperatura, hasta 5 sectores).
+Mantenimiento: $1,200 MXN/mes desde el 2° mes.
+Cuando alguien quiera cotización, pregunta: nombre del rancho,
+número de empleados, cuántas huertas tienen y si quieren demo.
 
 El sistema incluye:
 - PC servidor instalada y configurada
 - Tablet 8" con pantalla de checador (modo quiosco)
 - Lector RFID con 30 tarjetas/llaveros para empleados
 - Mini router TP-Link (red local privada sin internet)
+- Sensores IoT instalados y configurados (hasta 5 sectores)
 - Instalación presencial + capacitación hasta 4 horas
 - Alta de todos los empleados en el sistema
 - 1er mes de soporte gratis
-- Módulos: asistencia RFID, tareas, pagos, inventario, reportes
+- 11 módulos: asistencia RFID, nómina automática, tareas, pagos, control de cajas/cosecha, inventario, sectores, reportes, Excel, roles, personalización
 
 Zona de servicio: Colima y estados cercanos.
 Funciona sin internet (red local privada).
@@ -75,17 +77,21 @@ Sistema de gestión para ranchos y huertas 🌱
 }
 
 function mensajePrecio() {
-  return `💰 *Precio de CP BerryTech*
+  return `💰 *Planes CP BerryTech* (pago único por huerta)
 
-*Pago único: $28,500 MXN* (todo incluido) — por huerta o rancho
-Mantenimiento: $1,200/mes desde el 2° mes
-Anticipo: 50% al contratar ($14,250 MXN)
+🏡 *Plan Local — $35,682 MXN*
+Anticipo: $17,841 MXN al firmar
+Para una huerta · Sin internet · Sensores IoT incluidos
 
-✅ Incluye: PC servidor, tablet con checador RFID, red local sin internet, 30 tarjetas, instalación presencial, capacitación y 1er mes de soporte gratis.
+🌐 *Plan Híbrida — $50,682 MXN*
+Anticipo: $25,341 MXN al firmar
+Todo lo de Local + panel remoto para varias huertas
 
-📍 Si tienes más de una huerta, cada ubicación necesita su propio sistema (cotización aparte).
+✅ Ambos incluyen: PC servidor, tablet RFID, red local sin internet, sensores IoT (5 sectores), 30 tarjetas, instalación presencial, capacitación y 1er mes de soporte gratis.
+📱 11 módulos: asistencia, nómina, tareas, pagos, cosecha, inventario, reportes, Excel y más.
+🔧 Mantenimiento: $1,200 MXN/mes desde el 2° mes.
 
-¿Te gustaría agendar una demostración en tu rancho? 🌱`;
+¿Cuántas huertas tienes? Te ayudo a elegir el plan ideal 🌱`;
 }
 
 function mensajeDemo() {

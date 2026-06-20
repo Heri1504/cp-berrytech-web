@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Precio del sistema | CP BerryTech — $28,500 MXN todo incluido</title>
-  <meta name="description" content="CP BerryTech: $28,500 MXN pago único. Incluye hardware, software, 11 módulos del sistema, instalación presencial, capacitación y 1er mes de soporte. Sin internet requerido." />
+  <title>Precio del sistema | CP BerryTech — Desde $35,682 MXN</title>
+  <meta name="description" content="CP BerryTech: dos planes desde $35,682 MXN pago único. Incluye hardware, sensores IoT, 11 módulos del sistema, instalación presencial, capacitación y soporte. Sin internet requerido." />
   <meta name="robots" content="index, follow" />
-  <meta property="og:title" content="CP BerryTech — $28,500 MXN todo incluido" />
-  <meta property="og:description" content="Sistema completo de gestión para tu rancho: 11 módulos, hardware, instalación presencial. Un solo pago, sin internet." />
+  <meta property="og:title" content="CP BerryTech — Planes desde $35,682 MXN" />
+  <meta property="og:description" content="Plan Local o Plan Híbrida para tu rancho. Hardware, sensores IoT, 11 módulos y soporte. Pago único desde $35,682 MXN, instalación presencial." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -77,10 +77,10 @@
     .grad { background: linear-gradient(95deg, var(--green2) 0%, #b6ec50 28%, #9fbfff 58%, var(--blue2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
     .page-hero p { font-size: 17px; color: var(--muted2); line-height: 1.82; max-width: 720px; margin: 0 auto; }
 
-    /* PLAN ÚNICO */
+    /* DOS PLANES */
     .plan-section { padding: 0 0 60px; }
 
-    /* Badge externo centrado encima de la card */
+    /* Badge externo centrado encima de las tarjetas */
     .plan-badge-outer {
       display: flex; justify-content: center; margin-bottom: -16px; position: relative; z-index: 2;
     }
@@ -92,15 +92,52 @@
       box-shadow: 0 6px 20px rgba(36,86,184,.40);
     }
 
-    /* Card del plan */
-    .single-plan {
-      background: linear-gradient(155deg, rgba(127,198,31,.10), rgba(36,86,184,.13));
-      border: 1px solid rgba(127,198,31,.35);
-      border-radius: var(--rl);
-      box-shadow: var(--sh), 0 0 60px rgba(127,198,31,.10), 0 0 60px rgba(36,86,184,.08);
-      padding: 36px;
-      max-width: 900px; margin: 0 auto;
+    /* Cuadrícula de dos planes */
+    .plans-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      max-width: 1140px; margin: 0 auto;
     }
+
+    /* Tarjeta base */
+    .single-plan {
+      display: flex; flex-direction: column;
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--rl); box-shadow: var(--sh);
+      padding: 36px;
+    }
+    /* Tarjeta destacada (Plan Híbrida) */
+    .single-plan.featured {
+      position: relative;
+      background: linear-gradient(155deg, rgba(127,198,31,.10), rgba(36,86,184,.13));
+      border: 1px solid rgba(127,198,31,.40);
+      box-shadow: var(--sh), 0 0 60px rgba(127,198,31,.12), 0 0 60px rgba(36,86,184,.08);
+      transform: translateY(-6px);
+    }
+    /* Badge "Recomendado" sobre tarjeta destacada */
+    .plan-rec-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+      padding: 6px 16px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      font-size: 12px; font-weight: 700; color: #fff;
+      box-shadow: 0 4px 16px rgba(36,86,184,.35);
+    }
+    /* Tamaños reducidos para tarjetas lado a lado */
+    .single-plan .sp-logo { width: 46px; height: 46px; }
+    .single-plan .sp-name { font-size: 22px; }
+    .single-plan .sp-price { font-size: 38px; letter-spacing: -1.5px; }
+    /* Características en columna única dentro de cada tarjeta */
+    .sp-features.stacked { display: block; }
+    .sp-features.stacked > div + div { margin-top: 18px; }
+    /* Texto de referencia al Plan Local dentro de Plan Híbrida */
+    .plan-local-ref {
+      font-size: 14px; color: var(--muted2); line-height: 1.65;
+      padding: 12px 14px; border-radius: 12px;
+      background: rgba(127,198,31,.06); border: 1px solid rgba(127,198,31,.15);
+    }
+    /* CTAs verticales por tarjeta */
+    .plan-ctas { display: flex; flex-direction: column; gap: 10px; margin-top: auto; padding-top: 24px; }
+    .plan-ctas .btn { width: 100%; padding: 13px 18px; font-size: 14px; }
 
     /* Cabecera del plan */
     .sp-header {
@@ -112,12 +149,6 @@
     .sp-name { font-size: 28px; font-weight: 900; letter-spacing: -.5px; }
     .sp-tagline { font-size: 14px; color: var(--muted2); margin-top: 3px; }
     .sp-price-box { text-align: right; }
-    .launch-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 5px 14px; margin-bottom: 8px; border-radius: 999px;
-      background: rgba(255,213,0,.12); border: 1px solid rgba(255,213,0,.30);
-      font-size: 12px; font-weight: 700; color: #ffe08a;
-    }
     .sp-price { font-size: 52px; font-weight: 900; letter-spacing: -2px; color: var(--green2); line-height: 1; }
     .sp-currency { font-size: 14px; color: var(--muted); margin-top: 4px; font-weight: 500; }
     .sp-maintenance { font-size: 14px; color: var(--muted2); margin-top: 8px; line-height: 1.5; border-top: 1px solid var(--line); padding-top: 8px; }
@@ -161,20 +192,6 @@
     }
     .rfid-note a { color: var(--green2); border-bottom: 1px solid rgba(154,217,50,.3); }
     .rfid-note a:hover { border-bottom-color: var(--green2); }
-
-    /* ADD-ON SENSORES */
-    .addon-section { padding: 0 0 60px; }
-    .addon-card {
-      max-width: 900px; margin: 0 auto;
-      padding: 28px 32px; border-radius: var(--rl);
-      background: var(--card); border: 1px solid var(--line); box-shadow: var(--sh);
-      display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;
-    }
-    .addon-card h3 { font-size: 19px; font-weight: 800; margin-bottom: 6px; }
-    .addon-card p { font-size: 14px; color: var(--muted2); line-height: 1.7; max-width: 480px; }
-    .addon-cta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; flex-shrink: 0; }
-    .addon-price { font-size: 18px; font-weight: 800; color: var(--green2); white-space: nowrap; }
-    .addon-price span { display: block; font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 2px; }
 
     /* MANTENIMIENTO */
     .maint-section { padding: 0 0 60px; }
@@ -237,6 +254,8 @@
       h1 { font-size: 34px; }
       .sp-header { flex-direction: column; align-items: flex-start; }
       .sp-price-box { text-align: left; }
+      .plans-grid { grid-template-columns: 1fr; }
+      .single-plan.featured { transform: none; }
       .sp-features { grid-template-columns: 1fr; }
       .sp-list.cols-2 { grid-template-columns: 1fr; }
       .maint-features { grid-template-columns: 1fr; }
@@ -244,8 +263,6 @@
       .maint-price { text-align: left; }
       .cta-banner { flex-direction: column; padding: 24px; }
       .single-plan { padding: 24px 20px; }
-      .addon-card { flex-direction: column; align-items: flex-start; }
-      .addon-cta { width: 100%; justify-content: space-between; }
       .foot-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
@@ -309,111 +326,157 @@
       <div class="container" style="padding-top:44px">
 
         <div class="plan-badge-outer">
-          <span>⭐ Todo incluido · Un solo pago · Sin internet requerido</span>
+          <span>⭐ Sensores IoT incluidos · Pago único · Instalación presencial</span>
         </div>
 
-        <article class="single-plan fu">
-          <div class="sp-header">
-            <div class="sp-left">
-              <img src="logo.png" alt="CP BerryTech" class="sp-logo">
-              <div>
-                <div class="sp-name">CP BerryTech</div>
-                <div class="sp-tagline">Sistema completo de gestión para 1 huerta o rancho</div>
+        <div class="plans-grid">
+
+          <!-- PLAN LOCAL -->
+          <article class="single-plan fu">
+            <div class="sp-header">
+              <div class="sp-left">
+                <img src="logo.png" alt="CP BerryTech" class="sp-logo">
+                <div>
+                  <div class="sp-name">Plan Local</div>
+                  <div class="sp-tagline">Para una huerta o rancho · Sin internet</div>
+                </div>
+              </div>
+              <div class="sp-price-box">
+                <div class="sp-price">$35,682</div>
+                <div class="sp-currency">MXN &nbsp;·&nbsp; pago único &nbsp;·&nbsp; por huerta</div>
+                <div class="sp-maintenance">+ $1,200/mes mantenimiento<br>desde el 2° mes</div>
               </div>
             </div>
-            <div class="sp-price-box">
-              <span class="launch-badge">🚀 Precio de lanzamiento</span>
-              <div class="sp-price">$28,500</div>
-              <div class="sp-currency">MXN &nbsp;·&nbsp; pago único &nbsp;·&nbsp; por huerta</div>
-              <div class="sp-maintenance">+ $1,200/mes mantenimiento<br>desde el 2° mes</div>
+
+            <div class="sp-div"></div>
+
+            <div class="sp-features stacked">
+              <div>
+                <div class="sp-feat-title">⚙️ Hardware incluido</div>
+                <ul class="sp-list">
+                  <li><span class="chk">✓</span>PC servidor instalada y configurada</li>
+                  <li><span class="chk">✓</span>Tablet Android 8" (pantalla del checador)</li>
+                  <li><span class="chk">✓</span>Lector RFID USB + cable OTG</li>
+                  <li><span class="chk">✓</span>Mini router TP-Link (red local sin internet)</li>
+                  <li><span class="chk">✓</span>Bracket/soporte de pared para tablet</li>
+                  <li><span class="chk">✓</span>30 tarjetas/llaveros RFID para empleados</li>
+                </ul>
+              </div>
+              <div>
+                <div class="sp-feat-title">🌱 Sensores IoT incluidos</div>
+                <ul class="sp-list">
+                  <li><span class="chk">✓</span>Hasta 5 sectores con monitoreo</li>
+                  <li><span class="chk">✓</span>Sensor de humedad de suelo por sector</li>
+                  <li><span class="chk">✓</span>Sensor de humedad ambiental y temperatura</li>
+                  <li><span class="chk">✓</span>Alertas cuando los valores salen de rango</li>
+                  <li><span class="chk">✓</span>Nodos LoRa/WiFi instalados y configurados</li>
+                </ul>
+              </div>
+              <div>
+                <div class="sp-feat-title">📱 Módulos del sistema</div>
+                <ul class="sp-list cols-2">
+                  <li><span class="chk">✓</span>Checador de asistencia con RFID</li>
+                  <li><span class="chk">✓</span>Nómina automática calculada desde la asistencia</li>
+                  <li><span class="chk">✓</span>Seguimiento de tareas diarias</li>
+                  <li><span class="chk">✓</span>Control de pagos a empleados</li>
+                  <li><span class="chk">✓</span>Control de cajas y cosecha por sector</li>
+                  <li><span class="chk">✓</span>Inventario de insumos y aplicaciones</li>
+                  <li><span class="chk">✓</span>Gestión de sectores y parcelas</li>
+                  <li><span class="chk">✓</span>Reportes de gastos y avances</li>
+                  <li><span class="chk">✓</span>Exportación de reportes a Excel</li>
+                  <li><span class="chk">✓</span>Usuarios ilimitados con roles (Administrador, Supervisor, Trabajador)</li>
+                  <li><span class="chk">✓</span>Personalización con tu logo y colores</li>
+                </ul>
+              </div>
+              <div>
+                <div class="sp-feat-title">🛠️ Servicio y soporte</div>
+                <ul class="sp-list">
+                  <li><span class="chk">✓</span>Instalación presencial en tu rancho</li>
+                  <li><span class="chk">✓</span>Configuración completa de red local</li>
+                  <li><span class="chk">✓</span>Capacitación a tu equipo (hasta 4 hrs)</li>
+                  <li><span class="chk">✓</span>Alta de todos tus empleados en el sistema</li>
+                  <li><span class="chk">✓</span>1er mes de soporte técnico gratis</li>
+                  <li><span class="chk">✓</span>Agente IA en la web y WhatsApp</li>
+                </ul>
+              </div>
             </div>
-          </div>
 
-          <div class="sp-div"></div>
-
-          <div class="sp-features">
-            <!-- Columna 1: Hardware -->
-            <div>
-              <div class="sp-feat-title">⚙️ Hardware incluido</div>
-              <ul class="sp-list">
-                <li><span class="chk">✓</span>PC servidor instalada y configurada</li>
-                <li><span class="chk">✓</span>Tablet Android 8" (pantalla del checador)</li>
-                <li><span class="chk">✓</span>Lector RFID USB + cable OTG</li>
-                <li><span class="chk">✓</span>Mini router TP-Link (red local sin internet)</li>
-                <li><span class="chk">✓</span>Bracket/soporte de pared para tablet</li>
-                <li><span class="chk">✓</span>30 tarjetas/llaveros RFID para empleados</li>
-              </ul>
+            <div class="sp-note">
+              💡 <strong>Anticipo:</strong> 50% al firmar el contrato ($17,841 MXN). El 50% restante se paga al finalizar la instalación en tu rancho.
             </div>
 
-            <!-- Columna 2: Módulos -->
-            <div>
-              <div class="sp-feat-title">📱 Módulos del sistema</div>
-              <ul class="sp-list cols-2">
-                <li><span class="chk">✓</span>Checador de asistencia con RFID</li>
-                <li><span class="chk">✓</span>Nómina automática calculada desde la asistencia</li>
-                <li><span class="chk">✓</span>Seguimiento de tareas diarias</li>
-                <li><span class="chk">✓</span>Control de pagos a empleados</li>
-                <li><span class="chk">✓</span>Control de cajas y cosecha por sector</li>
-                <li><span class="chk">✓</span>Inventario de insumos y aplicaciones</li>
-                <li><span class="chk">✓</span>Gestión de sectores y parcelas</li>
-                <li><span class="chk">✓</span>Reportes de gastos y avances</li>
-                <li><span class="chk">✓</span>Exportación de reportes a Excel</li>
-                <li><span class="chk">✓</span>Usuarios ilimitados con roles (Administrador, Supervisor, Trabajador)</li>
-                <li><span class="chk">✓</span>Personalización con tu logo y colores</li>
-              </ul>
+            <div class="sp-note info">
+              📍 <strong>Precio por huerta:</strong> Cubre 1 sola ubicación. ¿Tienes más de una huerta? El Plan Híbrida te permite administrarlas todas desde un panel remoto.
             </div>
 
-            <!-- Columna 3: Servicio -->
-            <div>
-              <div class="sp-feat-title">🛠️ Servicio y soporte</div>
-              <ul class="sp-list">
-                <li><span class="chk">✓</span>Instalación presencial en tu rancho</li>
-                <li><span class="chk">✓</span>Configuración completa de red local</li>
-                <li><span class="chk">✓</span>Capacitación a tu equipo (hasta 4 hrs)</li>
-                <li><span class="chk">✓</span>Alta de todos tus empleados en el sistema</li>
-                <li><span class="chk">✓</span>1er mes de soporte técnico gratis</li>
-                <li><span class="chk">✓</span>Agente IA en la web y WhatsApp</li>
-              </ul>
+            <div class="plan-ctas">
+              <a class="btn wa" href="https://wa.me/523349834257?text=Hola%20CP%20BerryTech%2C%20me%20interesa%20el%20Plan%20Local%20%F0%9F%8C%B1" target="_blank" rel="noreferrer">
+                💬 Quiero el Plan Local
+              </a>
+              <a class="btn ghost" href="contacto.html">Solicitar demostración</a>
             </div>
-          </div>
+          </article>
 
-          <div class="sp-note">
-            💡 <strong>Anticipo requerido:</strong> Se requiere el 50% al firmar el contrato ($14,250 MXN). El 50% restante se paga al finalizar la instalación en tu rancho.
-          </div>
+          <!-- PLAN HÍBRIDA -->
+          <article class="single-plan featured fu">
+            <span class="plan-rec-badge">⭐ Recomendado para varias huertas</span>
+            <div class="sp-header">
+              <div class="sp-left">
+                <img src="logo.png" alt="CP BerryTech" class="sp-logo">
+                <div>
+                  <div class="sp-name">Plan Híbrida</div>
+                  <div class="sp-tagline">Para varias huertas · Con panel remoto</div>
+                </div>
+              </div>
+              <div class="sp-price-box">
+                <div class="sp-price">$50,682</div>
+                <div class="sp-currency">MXN &nbsp;·&nbsp; pago único &nbsp;·&nbsp; por huerta</div>
+                <div class="sp-maintenance">+ $1,200/mes mantenimiento<br>desde el 2° mes</div>
+              </div>
+            </div>
 
-          <div class="sp-note info">
-            📍 <strong>Precio por huerta o rancho:</strong> Este plan cubre 1 sola ubicación con su propia red local, hardware e instalación. Si tienes más de una huerta, cada una requiere su propio sistema — contáctanos para una cotización por varias ubicaciones.
-          </div>
+            <div class="sp-div"></div>
 
-          <div class="sp-ctas">
-            <a class="btn wa" href="https://wa.me/523349834257?text=Hola%20CP%20BerryTech%2C%20me%20interesa%20el%20sistema%20para%20mi%20rancho%20%F0%9F%8C%B1" target="_blank" rel="noreferrer">
-              💬 Quiero este sistema
-            </a>
-            <a class="btn ghost" href="contacto.html">Solicitar demostración</a>
-          </div>
-        </article>
+            <div class="sp-features stacked">
+              <div>
+                <div class="sp-feat-title">✅ Incluye todo el Plan Local</div>
+                <p class="plan-local-ref">Hardware completo, sensores IoT en 5 sectores, 11 módulos del sistema, instalación presencial y soporte.</p>
+              </div>
+              <div>
+                <div class="sp-feat-title">🌐 Panel remoto multi-huerta</div>
+                <ul class="sp-list">
+                  <li><span class="chk">✓</span>Administra varias huertas desde una sola cuenta</li>
+                  <li><span class="chk">✓</span>Cambia de huerta sin cerrar sesión (selector de huerta)</li>
+                  <li><span class="chk">✓</span>Aprueba nómina e inventario a distancia</li>
+                  <li><span class="chk">✓</span>Consulta la humedad de cada sector desde cualquier lugar, sin estar en la huerta</li>
+                  <li><span class="chk">✓</span>Ideal para dueños de varios ranchos o administradores que no están siempre en sitio</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sp-note">
+              💡 <strong>Anticipo:</strong> 50% al firmar el contrato ($25,341 MXN). El 50% restante se paga al finalizar la instalación en tu rancho.
+            </div>
+
+            <div class="sp-note info">
+              🌐 <strong>Panel remoto:</strong> Requiere internet en el dispositivo del administrador (celular, tablet o laptop). El sistema en la huerta sigue funcionando sin internet.
+            </div>
+
+            <div class="plan-ctas">
+              <a class="btn wa" href="https://wa.me/523349834257?text=Hola%20CP%20BerryTech%2C%20me%20interesa%20el%20Plan%20H%C3%ADbrida%20%F0%9F%8C%B1" target="_blank" rel="noreferrer">
+                💬 Quiero el Plan Híbrida
+              </a>
+              <a class="btn ghost" href="contacto.html">Solicitar demostración</a>
+            </div>
+          </article>
+
+        </div><!-- /plans-grid -->
 
         <p class="rfid-note">
           ¿Necesitas más tarjetas RFID? Paquetes de 10 adicionales desde <strong>$250 MXN</strong> &nbsp;·&nbsp;
           <a href="https://wa.me/523349834257?text=Hola%2C%20quiero%20tarjetas%20RFID%20adicionales" target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
         </p>
 
-      </div>
-    </div>
-
-    <!-- ADD-ON: SENSORES -->
-    <div class="addon-section">
-      <div class="container">
-        <div class="addon-card fu">
-          <div>
-            <h3>📡 Expansión: Sensores de campo</h3>
-            <p>Monitorea humedad y temperatura de tus parcelas en tiempo real, directo en tu sistema.</p>
-          </div>
-          <div class="addon-cta">
-            <div class="addon-price">$1,500 <span>MXN por nodo instalado</span></div>
-            <a class="btn wa" href="https://wa.me/523349834257?text=Hola%2C%20me%20interesan%20los%20sensores%20de%20campo%20para%20mi%20rancho" target="_blank" rel="noreferrer">💬 Consultar sensores</a>
-          </div>
-        </div>
       </div>
     </div>
 

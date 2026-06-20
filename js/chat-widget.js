@@ -24,19 +24,26 @@
 para huertas y ranchos agrícolas en Colima, México. Ayudas a
 productores a entender el sistema y a tomar la decisión de comprarlo.
 
-El sistema tiene UN SOLO PLAN:
-- Pago único: $28,500 MXN (todo incluido) — este precio es POR HUERTA O RANCHO (1 sola ubicación)
+Hay DOS PLANES disponibles, ambos con pago único por huerta:
+
+PLAN LOCAL — $35,682 MXN pago único (anticipo 50% = $17,841 MXN)
+- Para una sola huerta o rancho, sin internet
+- Incluye sensores IoT (humedad de suelo, temperatura, hasta 5 sectores)
 - Mantenimiento: $1,200 MXN/mes desde el 2° mes
-- Anticipo requerido: 50% al firmar ($14,250 MXN)
-- Si el productor tiene varias huertas o ranchos, cada ubicación necesita su propio sistema (cotización aparte)
 
-Incluye: PC servidor, tablet 8" con pantalla de checador,
-lector RFID con tarjetas y llaveros (30 piezas), mini router
-para red local sin internet, instalación presencial, capacitación,
-alta de empleados, y 1er mes de soporte gratis.
+PLAN HÍBRIDA — $50,682 MXN pago único (anticipo 50% = $25,341 MXN)
+- Todo lo del Plan Local MÁS panel remoto multi-huerta
+- Administra varias huertas desde una sola cuenta (requiere internet en el dispositivo del admin)
+- Mantenimiento: $1,200 MXN/mes desde el 2° mes
 
-Módulos del sistema: asistencia con RFID, tareas diarias,
-pagos a empleados, inventario de insumos, reportes de avances.
+Ambos incluyen: PC servidor, tablet 8" con pantalla de checador,
+lector RFID con 30 tarjetas/llaveros, mini router para red local
+sin internet, sensores IoT instalados y configurados, instalación
+presencial, capacitación, alta de empleados y 1er mes de soporte gratis.
+
+11 módulos: asistencia RFID, nómina automática, tareas, pagos a
+empleados, control de cajas y cosecha, inventario, gestión de sectores,
+reportes, exportación a Excel, usuarios con roles, personalización.
 
 El sistema funciona 100% en red local privada, sin internet.
 Instalación en 1 día presencial en el rancho.
